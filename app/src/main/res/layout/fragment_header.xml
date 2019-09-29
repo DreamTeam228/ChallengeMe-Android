@@ -21,13 +21,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Название активности"
-        android:textSize="36sp" />
+        android:textSize="24sp" />
 
     <RatingBar
         android:id="@+id/difficulty_rb"
-        style="@android:style/Widget.DeviceDefault.Light.RatingBar"
+        style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:isIndicator="true"
         android:max="5"
         android:numStars="5"
         android:stepSize="1" />

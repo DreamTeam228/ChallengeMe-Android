@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.*
 
-fun getDate () : Date {
+fun getDate () : Date {  //функция вывода сегодняшней даты
     val formatter = SimpleDateFormat(
         "dd/MM/yyyy"
     )
@@ -28,14 +28,14 @@ class HeadFragment : Fragment() {
     lateinit var difficultyView : RatingBar
 
 
-fun newFragment() : Fragment {
+fun newFragment() : Fragment { // создание нового фрагмента
     return HeadFragment()
 }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        retainInstance = true
-        val bundle: Bundle? = this.arguments
+        retainInstance = true // запрет на убийство фрагмена при повороте экрана
+        val bundle: Bundle? = this.arguments // получаем объект
         if (bundle != null) {
             item = bundle.getParcelable("item")!!
         }
@@ -55,6 +55,8 @@ fun newFragment() : Fragment {
         dayTextView = view.findViewById(R.id.day_tv)
         difficultyView = view.findViewById(R.id.difficulty_rb)
         difficultyView.numStars = 5
+
+        // отображаем соответствующую информацию на экране
 
         nameTextView.text = item.name
         categoryTextView.text = item.category
