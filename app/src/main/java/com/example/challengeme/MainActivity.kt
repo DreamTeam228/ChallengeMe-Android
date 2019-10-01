@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         // создадим временный объект для тестов
 
          tmpObject =  HobbyObject("Катание на роликах", "Спорт",
-                 2, "Это тапочки с колесами", arrayOf("https://im0-tub-ru.yandex.net/i?id=7bd0fc31f377bc7977dc0ec7dfbe9d54-l&n=13"),
+                 2, "Это тапочки с колесами", arrayOf("https://im0-tub-ru.yandex.net/i?id=7bd0fc31f377bc7977dc0ec7dfbe9d54-l&n=13", "https://im0-tub-ru.yandex.net/i?id=2a383e99e452377ef82c17c6afaf78e0-l&n=13","https://im0-tub-ru.yandex.net/i?id=358e938efb5f7f856ba7bc2a5e2fcd15-l&n=13"),
                 "Встань и оттолкнись", arrayOf("https://youtu.be/AIBFxKRlgE4"),
                  arrayOf("1. Попробуйте сделать змейку", "2. Попробуйте резко повернуть"),
                  arrayOf("https://im0-tub-ru.yandex.net/i?id=ad88320989e8f07ccc73669fea98e5f0-l&n=13"))
