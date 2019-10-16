@@ -1,4 +1,22 @@
 <resources>
     <string name="app_name">ChallengeMe</string>
     <string name="title_activity_maps">Map</string>
+    <string name="MAP_API_KEY">AIzaSyBqb5bCeJ_SU9en13PozYpk5SXNthPskqg</string>
+    <string name="tmp_name">Катание на роликах</string>
+    <string name="tmp_category">Спорт</string>
+    <string name="tmp_description">Это тапочки с колесами</string>
+    <string name="tmp_guide">Встань и оттолкнись</string>
+    <string name="tmp_ex1">1. Попробуйте сделать змейку</string>
+    <string name="tmp_ex2">2. Попробуйте резко повернуть</string>
+    <string name="descriptionTitle">Описание</string>
+    <string name="guideTitle">гайд</string>
+    <string name="whereTitle">Где можно этим заняться?</string>
+    <string name="openMapButtonTitle">Открыть карту</string>
+    <string name="companyTitle">Нужна компания?</string>
+    <string name="findCompanyButtonTitle">Найти компанию</string>
+    <string name="exercisesTitle">Уже умеете? Вот несколько упражнений!</string>
+    <string name="dayCounterTitle">Идет 2 день</string>
+    <string name="nameTitle">Название активности</string>
+    <string name="categoryTitle">Категория</string>
+    <string name="dateTitle">Дата</string>
 </resources>

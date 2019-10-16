@@ -34,10 +34,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        val markers: ArrayList<MapMarker> = intent.getParcelableArrayListExtra("markers")
+        for (i in markers) {
+            val place = i.toLatLang()
+            mMap.addMarker(MarkerOptions().position(place).title(i.name))
+        }
+        val startPoint = LatLng(55.7,37.6) // здесь будет местополжение пользователя
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(startPoint))
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+       //val sydney = LatLng(-34.0, 151.0)
+        //mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+
     }
 }

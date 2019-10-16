@@ -17,7 +17,7 @@
                 android:id="@+id/descritpion_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Описание" />
+                android:text="@string/descriptionTitle" />
 
             <TextView
                 android:id="@+id/description_tv"
@@ -35,7 +35,7 @@
                 android:id="@+id/guide_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="гайд" />
+                android:text="@string/guideTitle" />
 
             <TextView
                 android:id="@+id/guide_tv"
@@ -47,31 +47,31 @@
                 android:id="@+id/open_map_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Нужно оборудование?" />
+                android:text="@string/whereTitle" />
 
             <Button
                 android:id="@+id/open_map_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Открыть карту" />
+                android:text="@string/openMapButtonTitle" />
 
             <TextView
                 android:id="@+id/find_people_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Нужна компания?" />
+                android:text="@string/companyTitle" />
 
             <Button
                 android:id="@+id/find_people_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Найти компанию" />
+                android:text="@string/findCompanyButtonTitle" />
 
             <TextView
                 android:id="@+id/exersise_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Уже умеете? Вот несколько упражнений!" />
+                android:text="@string/exercisesTitle" />
 
             <TextView
                 android:id="@+id/exercise_tv"
