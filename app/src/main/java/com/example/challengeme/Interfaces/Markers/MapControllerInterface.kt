@@ -1,6 +1,6 @@
 package com.example.challengeme.Interfaces.Markers
 
-interface MarkerControllerInterface {
+interface MapControllerInterface {
     fun showRent()
     fun showShop()
     fun showEdu()

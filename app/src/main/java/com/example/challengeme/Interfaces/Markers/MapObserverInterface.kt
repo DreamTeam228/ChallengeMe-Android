@@ -1,5 +1,5 @@
 package com.example.challengeme.Interfaces.Markers
 
-interface MarkerObserverInterface {
+interface MapObserverInterface {
     fun update()
 }

@@ -7,23 +7,21 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.example.challengeme.Interfaces.Hobby.HobbyControllerInterface
-import com.example.challengeme.Interfaces.Hobby.HobbyModelInterface
+import com.example.challengeme.Interfaces.Hobby.HobbyObjectInterface
 import com.example.challengeme.Markers.MapMarker
 import com.example.challengeme.R
 
-lateinit var tmpObject: HobbyObject
 var markers : ArrayList<MapMarker> = ArrayList()
-const val LAN = 90
-const val LNG = 180
 
 class MainActivity : AppCompatActivity() {
+
     lateinit var image_pager: ViewPager
-    lateinit var model: HobbyModelInterface
+    lateinit var model: HobbyObjectInterface
     lateinit var controller: HobbyControllerInterface
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
         val fragmentManager = supportFragmentManager
         image_pager.adapter = PagerAdapter(fragmentManager)

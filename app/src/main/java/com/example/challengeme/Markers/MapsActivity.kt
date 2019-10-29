@@ -2,6 +2,8 @@ package com.example.challengeme.Markers
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.challengeme.Interfaces.Markers.MapControllerInterface
+import com.example.challengeme.Interfaces.Markers.MapMarkerObjectInterface
 import com.example.challengeme.R
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -13,6 +15,9 @@ import com.google.android.gms.maps.model.LatLng
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
+    private lateinit var model : MapMarkerObjectInterface
+    private lateinit var controller : MapControllerInterface
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +43,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(startPoint))
 
         // Add a marker in Sydney and move the camera
-       //val sydney = LatLng(-34.0, 151.0)
+        //val sydney = LatLng(-34.0, 151.0)
         //mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
 
     }

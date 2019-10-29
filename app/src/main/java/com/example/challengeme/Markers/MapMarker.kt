@@ -2,9 +2,6 @@ package com.example.challengeme.Markers
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.example.challengeme.Interfaces.Markers.MarkerModelInterface
-import com.example.challengeme.Interfaces.Markers.MarkerObservableInterface
-import com.example.challengeme.Interfaces.Markers.MarkerObserverInterface
 import com.google.android.gms.maps.model.LatLng
 
 class MapMarker(val lat:Double,val lng:Double, val name:String) : Parcelable{

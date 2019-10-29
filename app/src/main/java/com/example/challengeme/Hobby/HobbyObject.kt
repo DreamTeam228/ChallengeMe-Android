@@ -2,13 +2,25 @@ package com.example.challengeme.Hobby
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.example.challengeme.Interfaces.Hobby.HobbyModelInterface
+import com.example.challengeme.Interfaces.Hobby.HobbyObjectInterface
 import com.example.challengeme.Interfaces.Hobby.HobbyObservableInterface
 import com.example.challengeme.Interfaces.Hobby.HobbyObserverInterface
 
 class HobbyObject
-    : Parcelable, HobbyModelInterface,
+    : HobbyObjectInterface,
     HobbyObservableInterface {
+
+    lateinit private var observers: MutableList<HobbyObserverInterface>
+    lateinit private var name: String
+    lateinit private var category: String
+    private var difficulty: Int = 0
+    lateinit private var description:String
+    lateinit private var images: ArrayList<String>
+    lateinit private var guide:String
+    lateinit private var guideVideo: ArrayList<String>
+    lateinit private var exercise: ArrayList<String>
+    lateinit private var exerciseImage:ArrayList<String>
+
     override fun setName() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -45,16 +57,6 @@ class HobbyObject
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    lateinit private var observers: MutableList<HobbyObserverInterface>
-    lateinit private var name: String
-    lateinit private var category: String
-    private var difficulty: Int = 0
-    lateinit private var description:String
-    lateinit private var images: ArrayList<String>
-    lateinit private var guide:String
-    lateinit private var guideVideo: ArrayList<String>
-    lateinit private var exercise: ArrayList<String>
-    lateinit private var exerciseImage:ArrayList<String>
     override fun getCategory(): String {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -94,6 +96,9 @@ class HobbyObject
 
     override fun notifyObservers() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        observers.forEachIndexed { index, element ->
+            element.update()
+        }
     }
 
     override fun registerObserver(o: HobbyObserverInterface) {

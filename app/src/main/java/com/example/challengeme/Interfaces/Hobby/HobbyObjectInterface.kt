@@ -1,21 +1,14 @@
 package com.example.challengeme.Interfaces.Hobby
 
-import java.util.*
+import android.os.Parcelable
+
 import kotlin.collections.ArrayList
 
-interface HobbyModelInterface {
-    /*
-    * private val name: String,
-                   private val category: String,
-                   private val difficulty: Int,
-                   private val description:String,
-                   private val images: Array<String>,
-                   private val guide:String,
-                   private val guideVideo: Array<String>,
-                   private val exercise: Array<String>,
-                   private val exerciseImage:Array<String>)*/
+interface HobbyObjectInterface : Parcelable {
+
     fun getData()
     fun setData()
+
     fun getName() : String
     fun getCategory(): String
     fun getDifficulty() : Int
@@ -36,8 +29,6 @@ interface HobbyModelInterface {
     fun setGuidevideo()
     fun setExercise()
     fun setExerciseImage()
-
-
 
 
 }

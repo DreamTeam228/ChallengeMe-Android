@@ -1,8 +1,9 @@
 package com.example.challengeme.Interfaces.Markers
 
+import android.os.Parcelable
 import com.example.challengeme.Markers.MapMarker
 
-interface MarkerModelInterface {
+interface MapMarkerObjectInterface : Parcelable {
     fun getEducationMarkers() : List<MapMarker>
     fun getShopMarkers() : List <MapMarker>
     fun getRentMarkers() : List<MapMarker>
