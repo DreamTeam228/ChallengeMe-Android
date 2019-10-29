@@ -1,14 +1,14 @@
-package com.example.challengeme
+package com.example.challengeme.Markers
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.challengeme.R
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -34,11 +34,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        val markers: ArrayList<MapMarker> = intent.getParcelableArrayListExtra("markers")
-        for (i in markers) {
-            val place = i.toLatLang()
-            mMap.addMarker(MarkerOptions().position(place).title(i.name))
-        }
         val startPoint = LatLng(55.7,37.6) // здесь будет местополжение пользователя
         mMap.moveCamera(CameraUpdateFactory.newLatLng(startPoint))
 

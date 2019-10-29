@@ -1,24 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/head_fragment_layout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-    </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/body_fragment_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    </FrameLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/header"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/date_tv"
+                    style="@style/CM_header_label.text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dateTitle"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/day_tv"
+                    style="@style/CM_header_label.text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/dayCounterTitle"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/hobby_name_tv"
+                    style="@style/CM_header_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/nameTitle"
+                    android:textAlignment="center"
+                    android:textSize="24sp" />
+
+                <RatingBar
+                    android:id="@+id/difficulty_rb"
+                    style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:isIndicator="true"
+                    android:max="5"
+                    android:numStars="5"
+                    android:stepSize="1" />
+
+                <TextView
+                    android:id="@+id/category_tv"
+                    style="@style/CM_header_label.text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/categoryTitle"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/descritpion_title"
+                style="@style/CM_body_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/descriptionTitle" />
+
+            <TextView
+                android:id="@+id/description_tv"
+                style="@style/CM_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Текст описания" />
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/image_vp"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/guide_title"
+                style="@style/CM_body_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/guideTitle" />
+
+            <TextView
+                android:id="@+id/guide_tv"
+                style="@style/CM_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="Текст гайда" />
+
+            <TextView
+                android:id="@+id/open_map_text"
+                style="@style/CM_body_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/whereTitle" />
+
+            <Button
+                android:id="@+id/open_map_button"
+                style="@style/CM_button"
+                android:layout_width="300dp"
+                android:background="@drawable/button_gradient"
+                android:soundEffectsEnabled="true"
+                android:text="@string/openMapButtonTitle" />
+
+            <TextView
+                android:id="@+id/find_people_text"
+                style="@style/CM_body_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/companyTitle" />
+
+            <Button
+                android:id="@+id/find_people_button"
+                style="@style/CM_button"
+                android:background="@drawable/button_gradient"
+                android:text="@string/findCompanyButtonTitle" />
+
+            <TextView
+                android:id="@+id/exersise_title"
+                style="@style/CM_body_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/exercisesTitle" />
+
+            <TextView
+                android:id="@+id/exercise_tv"
+                style="@style/CM_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </ScrollView>
 </LinearLayout>
