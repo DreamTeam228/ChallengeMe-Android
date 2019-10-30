@@ -6,47 +6,64 @@ import com.example.challengeme.Interfaces.Markers.MapMarkerObjectInterface
 import com.example.challengeme.Interfaces.Markers.MapObservableInterface
 import com.example.challengeme.Interfaces.Markers.MapObserverInterface
 
-class MapMarkerObject() : MapMarkerObjectInterface,
+class MapMarkerObject : MapMarkerObjectInterface,
     MapObservableInterface {
-    lateinit private var educationMarkers: List<MapMarker>
-    lateinit private var shopMarkers: List<MapMarker>
-    lateinit private var rentMarkers: List<MapMarker>
-    lateinit private var observers : ArrayList<MapObserverInterface>
 
-    override fun setEducationMarkers() {
+    private lateinit var educationMarkers: ArrayList<MapMarker>
+    private lateinit var shopMarkers: ArrayList<MapMarker>
+    private lateinit var rentMarkers: ArrayList<MapMarker>
+    private lateinit var observers : ArrayList<MapObserverInterface>
+
+    override fun setEducationMarkers(m: List<MapMarker>) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun setShopMarkers() {
+    override fun setShopMarkers(m: List<MapMarker>) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun setRentMarkers() {
+    override fun setRentMarkers(m: List<MapMarker>) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun getEducationMarkers(): List<MapMarker> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun addEducationMarker(m: MapMarker) {
+        this.educationMarkers.add(m)
     }
 
-    override fun getShopMarkers(): List<MapMarker> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun addRentMarker(m: MapMarker) {
+        this.rentMarkers.add(m)
+       }
+
+    override fun addShopMarker(m: MapMarker) {
+        this.shopMarkers.add(m)
+         }
+
+
+
+    override fun getEducationMarkers(): ArrayList<MapMarker> {
+        return this.educationMarkers
     }
 
-    override fun getRentMarkers(): List<MapMarker> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getShopMarkers(): ArrayList<MapMarker> {
+        return this.shopMarkers
+    }
+
+    override fun getRentMarkers(): ArrayList<MapMarker> {
+        return this.rentMarkers
     }
 
     override fun notifyObservers() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        observers.forEachIndexed { _, element ->
+            element.update()
+        }
     }
 
     override fun registerObserver(o: MapObserverInterface) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        observers.add(o)
     }
 
     override fun deleteObserver(o: MapObserverInterface) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        observers.remove(o)
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

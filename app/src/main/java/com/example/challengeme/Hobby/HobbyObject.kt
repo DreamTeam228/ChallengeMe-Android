@@ -10,103 +10,117 @@ class HobbyObject
     : HobbyObjectInterface,
     HobbyObservableInterface {
 
-    lateinit private var observers: MutableList<HobbyObserverInterface>
-    lateinit private var name: String
-    lateinit private var category: String
+    private lateinit var observers: MutableList<HobbyObserverInterface>
+    private lateinit var name: String
+    private lateinit var category: String
     private var difficulty: Int = 0
-    lateinit private var description:String
-    lateinit private var images: ArrayList<String>
-    lateinit private var guide:String
-    lateinit private var guideVideo: ArrayList<String>
-    lateinit private var exercise: ArrayList<String>
-    lateinit private var exerciseImage:ArrayList<String>
+    private lateinit var description:String
+    private lateinit var images: ArrayList<String>
+    private lateinit var guide:String
+    private lateinit var guideVideo: ArrayList<String>
+    private lateinit var exercise: ArrayList<String>
+    private lateinit var exerciseImage:ArrayList<String>
 
-    override fun setName() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun setName(str: String) {
+        this.name = str
     }
 
-    override fun setCategory() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun setCategory(str: String) {
+        this.category = str
     }
 
-    override fun setDifficulty() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun setDifficulty(level: Int) {
+        if (level in 1..5)
+        this.difficulty = level
+        else this.difficulty = 2
     }
 
-    override fun setDescription() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun setDescription(str: String) {
+        this.description = str
     }
 
-    override fun setImages() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun setImages(images: ArrayList<String>) {
+        this.images = images
     }
 
-    override fun setGuide() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun setGuide(str: String) {
+        this.guide = str
     }
 
-    override fun setGuidevideo() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun setGuidevideo(videos: ArrayList<String>) {
+       this.guideVideo = videos
+           }
+
+    override fun setExercise(exes: ArrayList<String>) {
+        this.exercise = exes
     }
 
-    override fun setExercise() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun setExerciseImage(exesImages: ArrayList<String>) {
+        this.exerciseImage = exesImages
     }
 
-    override fun setExerciseImage() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+    override fun getImageSize(): Int {
+        return this.images.size
     }
+    override fun getGuideVideoSize(): Int {
+        return this.guideVideo.size
+    }
+    override fun getExecImageSize(): Int {
+        return this.exerciseImage.size
+    }
+
 
     override fun getCategory(): String {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return this.category
     }
 
-    override fun getGuidevideo(): ArrayList<String> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getGuidevideo(position: Int): String {
+        return this.guideVideo[position]
     }
 
-    override fun getExercise(): ArrayList<String> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getExercise(position: Int): String {
+        return this.exercise[position]
     }
 
-    override fun getExerciseImage(): ArrayList<String> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getExerciseImage(position: Int): String {
+        return this.exerciseImage[position]
     }
 
 
     override fun getName(): String {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return this.name
     }
 
     override fun getDifficulty(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+       return this.difficulty
     }
 
-    override fun getImages(): ArrayList<String> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getImages(position: Int): String {
+        return this.images[position]
     }
 
     override fun getDescription(): String {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return this.description
     }
 
     override fun getGuide(): String {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return this.guide
     }
 
     override fun notifyObservers() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        observers.forEachIndexed { index, element ->
+
+        observers.forEachIndexed { _, element ->
             element.update()
         }
     }
 
     override fun registerObserver(o: HobbyObserverInterface) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+       observers.add(o)
     }
 
     override fun deleteObserver(o: HobbyObserverInterface) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        observers.remove(o)
     }
 
     override fun getData() {

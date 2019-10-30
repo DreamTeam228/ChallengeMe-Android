@@ -26,6 +26,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        this.model = intent.getParcelableExtra(R.string.mapIntent.toString())!! // следует ли это делать через контроллер?
     }
 
     /**

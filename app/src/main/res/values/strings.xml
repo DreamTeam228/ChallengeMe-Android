@@ -19,4 +19,6 @@
     <string name="nameTitle">Название активности</string>
     <string name="categoryTitle">Категория</string>
     <string name="dateTitle">Дата</string>
+    <string name="mapIntent">MapModel</string>
+    <string name="modelIntent">HobbyModel</string>
 </resources>

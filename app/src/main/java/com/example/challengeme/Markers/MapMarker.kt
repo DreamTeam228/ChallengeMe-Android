@@ -11,6 +11,11 @@ class MapMarker(val lat:Double,val lng:Double, val name:String) : Parcelable{
         parcel.readString()!!
     )
 
+    // создает объект-метку для карты
+    fun toLatLang():LatLng {
+        return LatLng(lat,lng)
+    }
+
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeDouble(lat)
         parcel.writeDouble(lng)
@@ -31,9 +36,7 @@ class MapMarker(val lat:Double,val lng:Double, val name:String) : Parcelable{
         }
     }
 
-    fun toLatLang():LatLng {
-        return LatLng(lat,lng)
-    }
+
 
 }
 

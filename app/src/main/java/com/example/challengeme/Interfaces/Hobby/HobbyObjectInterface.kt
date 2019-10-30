@@ -13,22 +13,25 @@ interface HobbyObjectInterface : Parcelable {
     fun getCategory(): String
     fun getDifficulty() : Int
     fun getDescription() : String
-    fun getImages() : ArrayList<String>
+    fun getImages(position: Int) : String
     fun getGuide(): String
-    fun getGuidevideo() : ArrayList<String>
-    fun getExercise(): ArrayList<String>
-    fun getExerciseImage(): ArrayList<String>
+    fun getGuidevideo(position: Int) : String
+    fun getExercise(position: Int): String
+    fun getExerciseImage(position: Int): String
+    fun getImageSize(): Int
+    fun getGuideVideoSize(): Int
+    fun getExecImageSize(): Int
 
 
-    fun setName()
-    fun setCategory()
-    fun setDifficulty()
-    fun setDescription()
-    fun setImages()
-    fun setGuide()
-    fun setGuidevideo()
-    fun setExercise()
-    fun setExerciseImage()
+    fun setName(str:String)
+    fun setCategory(str:String)
+    fun setDifficulty(level: Int)
+    fun setDescription(str:String)
+    fun setImages(images: ArrayList<String>)
+    fun setGuide(str: String)
+    fun setGuidevideo(videos: ArrayList<String>)
+    fun setExercise(exes: ArrayList<String>)
+    fun setExerciseImage(exesImages: ArrayList<String>)
 
 
 }
