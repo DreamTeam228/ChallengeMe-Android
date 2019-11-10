@@ -9,10 +9,12 @@ import com.example.challengeme.Interfaces.Markers.MapObserverInterface
 class MapMarkerObject : MapMarkerObjectInterface,
     MapObservableInterface {
 
-    private lateinit var educationMarkers: ArrayList<MapMarker>
-    private lateinit var shopMarkers: ArrayList<MapMarker>
-    private lateinit var rentMarkers: ArrayList<MapMarker>
-    private lateinit var observers : ArrayList<MapObserverInterface>
+    // Аналогично рпедлагаю рассмотреть синглтоны
+
+    private var educationMarkers: ArrayList<MapMarker> = ArrayList()
+    private var shopMarkers: ArrayList<MapMarker> = ArrayList()
+    private var rentMarkers: ArrayList<MapMarker> = ArrayList()
+    private var observers : ArrayList<MapObserverInterface> = ArrayList()
 
     override fun setEducationMarkers(m: List<MapMarker>) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -24,6 +26,20 @@ class MapMarkerObject : MapMarkerObjectInterface,
 
     override fun setRentMarkers(m: List<MapMarker>) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun addMarker(m: MapMarker) {
+        when (m.category) {
+            "edu" -> addEducationMarker(m)
+            "shop" -> addShopMarker(m)
+            "rent" -> addRentMarker(m)
+            "all" -> {
+                addEducationMarker(m)
+                addRentMarker(m)
+                addShopMarker(m)
+            }
+
+        }
     }
 
     override fun addEducationMarker(m: MapMarker) {

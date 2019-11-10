@@ -1,18 +1,27 @@
 package com.example.challengeme.Hobby
 
+import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.os.Parcelable
+import androidx.core.content.ContextCompat.startActivity
 import com.example.challengeme.Interfaces.Hobby.HobbyControllerInterface
 import com.example.challengeme.Interfaces.Hobby.HobbyObjectInterface
 import com.example.challengeme.Interfaces.Markers.MapMarkerObjectInterface
+import com.example.challengeme.Markers.MapMarkerObject
 import com.example.challengeme.Markers.MapsActivity
 import com.example.challengeme.R
 
-//private val INTENT_TAG = "model"
+// private const val INTENT_TAG = "model" - R.string.modelIntent
 
 class HobbyController(private val model: HobbyObjectInterface) : HobbyControllerInterface {
+
+    // Думаю, для удосбтва можно было бы создаать универсальный контроллер,
+    // раз мы из Мэйн все равно везде попадаем,
+    // и по этой причине у нас уже есть все модели
+
+    private lateinit var mapModel: MapMarkerObjectInterface     // Где-то ее еще нужно заполнить
 
     // Вот это было бы универсальным решением, идея -
     // - передавать в агрументы откуда переходим и куда
@@ -20,13 +29,28 @@ class HobbyController(private val model: HobbyObjectInterface) : HobbyController
     /*override fun startNewActivity(from: Context, to: Activity) {
         val i = Intent(from, to::class.java)
         i.putExtra(INTENT_TAG, model)
+        // единственная проблема - мы передаем разную модель
+        // для карты - модель МарМодель
+        // для пользователя, думаю, будет тоже своя
         startActivity(from, i, null)
     }*/
 
 
-    override fun onMapButtonClick(context: Context, obj: MapMarkerObjectInterface) {
-       val intent = Intent(context, MapsActivity::class.java)
-        intent.putExtra(R.string.mapIntent.toString(),obj)
+    override fun onLoadingComplete(context: Context) {
+        val intent = Intent(context, MainActivity::class.java)
+        // модель можно и через bundle передавать, вроде
+        intent.putExtra(R.string.modelIntent.toString(), model)
+        startActivity(context, intent, null)
+
+    }
+
+    override fun onMapButtonClick(context: Context) {
+        //var mapMarkersModel: MapMarkerObjectInterface = MapMarkerObject()       // Пожалуй стоит сделать это при нажатии на мапБаттон
+
+        val intent = Intent(context, MapsActivity::class.java)
+        intent.putExtra(R.string.mapIntent.toString(),mapModel)
+        // модель можно и через bundle передавать, вроде
+        startActivity(context, intent, null)
 
     }
 

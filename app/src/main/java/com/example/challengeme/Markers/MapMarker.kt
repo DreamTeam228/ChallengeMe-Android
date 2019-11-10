@@ -4,11 +4,13 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.android.gms.maps.model.LatLng
 
-class MapMarker(val lat:Double,val lng:Double, val name:String) : Parcelable{
+class MapMarker(val lat:Double,val lng:Double, val name:String, val category: String) : Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readDouble(),
         parcel.readDouble(),
+        parcel.readString()!!,
         parcel.readString()!!
+
     )
 
     // создает объект-метку для карты
@@ -20,6 +22,7 @@ class MapMarker(val lat:Double,val lng:Double, val name:String) : Parcelable{
         parcel.writeDouble(lat)
         parcel.writeDouble(lng)
         parcel.writeString(name)
+        parcel.writeString(category)
     }
 
     override fun describeContents(): Int {

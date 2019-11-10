@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
         setContentView(R.layout.activity_main)
 
         this.model = intent.getParcelableExtra(R.string.modelIntent.toString())!!
+        controller = HobbyController(model)
         findViewElements()
         setViewElements()
 
@@ -59,6 +60,18 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
         guideTextView = findViewById(R.id.guide_tv)
         mapButton = findViewById(R.id.open_map_button)
         companyButton = findViewById(R.id.find_people_button)
+
+        mapButton.setOnClickListener{
+            // думаю надо сделать загрузку мапМаркеров именно тут а не в сплэше
+            // что-то мне подсказывает, что загрузка не должна осуществляться во view
+            // но я согласна, что в сплэшэ она еще не нужна
+
+            controller.onMapButtonClick(this)
+        }
+        companyButton.setOnClickListener {
+
+        }
+
     }
     // заполняем view
     private fun setViewElements() {
@@ -68,19 +81,11 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
         descriptionTextView.text = model.getDescription()
         image_pager.adapter = PagerAdapter(fragmentManager)
         guideTextView.text = model.getGuide()
-        mapButton.setOnClickListener{
-            // думаю надо сделать загрузку мапМаркеров именно тут а не в сплэше
-            val obj = intent.getParcelableExtra<MapMarkerObjectInterface>(R.string.mapIntent.toString()) // а так можно в мвс?
-            controller.onMapButtonClick(this, obj)
-        }
-        companyButton.setOnClickListener {
-
-        }
 
     }
 
     override fun update() {
-        // invalidate ?
+        setViewElements()
 
     }
 

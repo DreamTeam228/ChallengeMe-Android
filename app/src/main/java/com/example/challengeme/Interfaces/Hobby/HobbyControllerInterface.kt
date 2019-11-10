@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.challengeme.Interfaces.Markers.MapMarkerObjectInterface
 
 interface HobbyControllerInterface {
-    fun onMapButtonClick(context: Context, obj: MapMarkerObjectInterface)
+    fun onLoadingComplete(context: Context)
+    fun onMapButtonClick(context: Context)
     fun onCompanyButtonClick()
     fun onProfileButtonClick()
+
     //fun startNewActivity(from : Context, to : Activity)
 }

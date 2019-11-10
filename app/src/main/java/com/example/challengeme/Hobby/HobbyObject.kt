@@ -10,16 +10,27 @@ class HobbyObject
     : HobbyObjectInterface,
     HobbyObservableInterface {
 
-    private lateinit var observers: MutableList<HobbyObserverInterface>
-    private lateinit var name: String
-    private lateinit var category: String
+    /*
+    Существует проблема передачи объекта через интент -
+    после передачи - это уже другой объект
+    поэтому выдвигаю предложение сделать модель Синглтоном
+    таким образом в интенте будем передаваться ссылка
+    на нашу модель, вместо копии
+
+    либо объявить ее internal и обращаться, но это как-то bad practice
+     */
+
+
+    private var observers: MutableList<HobbyObserverInterface> = ArrayList()
+    private var name: String = "Name"
+    private var category: String = "Category"
     private var difficulty: Int = 0
-    private lateinit var description:String
-    private lateinit var images: ArrayList<String>
-    private lateinit var guide:String
-    private lateinit var guideVideo: ArrayList<String>
-    private lateinit var exercise: ArrayList<String>
-    private lateinit var exerciseImage:ArrayList<String>
+    private var description:String = "Description"
+    private var images: ArrayList<String> = ArrayList()
+    private var guide:String = "Guide"
+    private var guideVideo: ArrayList<String> = ArrayList()
+    private var exercise: ArrayList<String> = ArrayList()
+    private var exerciseImage:ArrayList<String> = ArrayList()
 
     override fun setName(str: String) {
         this.name = str
