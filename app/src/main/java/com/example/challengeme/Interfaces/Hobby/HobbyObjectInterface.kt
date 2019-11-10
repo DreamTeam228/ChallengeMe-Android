@@ -15,7 +15,7 @@ interface HobbyObjectInterface : Parcelable {
     fun getDescription() : String
     fun getImages(position: Int) : String
     fun getGuide(): String
-    fun getGuidevideo(position: Int) : String
+    fun getGuideVideo(position: Int) : String
     fun getExercise(position: Int): String
     fun getExerciseImage(position: Int): String
     fun getImageSize(): Int
@@ -29,7 +29,7 @@ interface HobbyObjectInterface : Parcelable {
     fun setDescription(str:String)
     fun setImages(images: ArrayList<String>)
     fun setGuide(str: String)
-    fun setGuidevideo(videos: ArrayList<String>)
+    fun setGuideVideo(videos: ArrayList<String>)
     fun setExercise(exes: ArrayList<String>)
     fun setExerciseImage(exesImages: ArrayList<String>)
 

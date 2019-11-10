@@ -47,7 +47,7 @@ class HobbyObject
         this.guide = str
     }
 
-    override fun setGuidevideo(videos: ArrayList<String>) {
+    override fun setGuideVideo(videos: ArrayList<String>) {
        this.guideVideo = videos
            }
 
@@ -75,7 +75,7 @@ class HobbyObject
         return this.category
     }
 
-    override fun getGuidevideo(position: Int): String {
+    override fun getGuideVideo(position: Int): String {
         return this.guideVideo[position]
     }
 

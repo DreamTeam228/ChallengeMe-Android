@@ -14,6 +14,9 @@ import com.example.challengeme.R
 
 class HobbyController(private val model: HobbyObjectInterface) : HobbyControllerInterface {
 
+    // Вот это было бы универсальным решением, идея -
+    // - передавать в агрументы откуда переходим и куда
+    // В таком случае можно было бы переходить и из Сплэша, и из Мэйн
     /*override fun startNewActivity(from: Context, to: Activity) {
         val i = Intent(from, to::class.java)
         i.putExtra(INTENT_TAG, model)

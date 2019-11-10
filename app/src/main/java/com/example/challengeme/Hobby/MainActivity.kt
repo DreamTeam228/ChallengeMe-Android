@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
         image_pager.adapter = PagerAdapter(fragmentManager)
         guideTextView.text = model.getGuide()
         mapButton.setOnClickListener{
+            // думаю надо сделать загрузку мапМаркеров именно тут а не в сплэше
             val obj = intent.getParcelableExtra<MapMarkerObjectInterface>(R.string.mapIntent.toString()) // а так можно в мвс?
             controller.onMapButtonClick(this, obj)
         }

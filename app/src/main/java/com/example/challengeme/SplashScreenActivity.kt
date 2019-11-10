@@ -17,13 +17,13 @@ class SplashScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         var hobbyModel: HobbyObjectInterface = HobbyObject()
-        var mapMarkersModel: MapMarkerObjectInterface = MapMarkerObject()
+        var mapMarkersModel: MapMarkerObjectInterface = MapMarkerObject()       // Пожалуй стоит сделать это при нажатии на мапБаттон
 
         //var hobbyController: HobbyControllerInterface = HobbyController(hobbyModel)
 
         val i = Intent(this, MainActivity::class.java)
-        i.putExtra("hobbyModel", hobbyModel)
-        i.putExtra("mapMarkersModel", mapMarkersModel)
+        i.putExtra(R.string.modelIntent.toString(), hobbyModel)
+        i.putExtra(R.string.mapIntent.toString(), mapMarkersModel)              // Соответственно этого тут не будет
         startActivity(i)
     }
 

@@ -44,7 +44,7 @@
     </style>
 
     <style name="CM_buttonBlue" parent="CM_button">
-        <item name="android:background">android:background="@drawable/button_gradient"</item>
+        <item name="android:background">@drawable/button_gradient</item>
     </style>
     <style name="CM_buttonRed" parent="CM_button">
 
