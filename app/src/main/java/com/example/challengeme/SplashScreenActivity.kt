@@ -1,12 +1,9 @@
 package com.example.challengeme
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ProgressBar
-import com.example.challengeme.Hobby.HobbyObject
-import com.example.challengeme.Hobby.MainActivity
-import com.example.challengeme.Interfaces.Hobby.HobbyObjectInterface
+
 
 class SplashScreenActivity : AppCompatActivity() {
 
@@ -16,7 +13,7 @@ class SplashScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         loadingLine = findViewById(R.id.progressBar)
-        var hobbyModel: HobbyObjectInterface = HobbyObject()
+        //var hobbyModel: HobbyObjectInterface = HobbyObject()
 
         /*
         Контроллер создает представление ?
@@ -29,10 +26,23 @@ class SplashScreenActivity : AppCompatActivity() {
         Вроде, мвс не разрешает делать такие вещи в представлениях
          */
 
-        //var hobbyController: HobbyControllerInterface = HobbyController(hobbyModel)
-        val i = Intent(this, MainActivity::class.java)
-        i.putExtra(R.string.modelIntent.toString(), hobbyModel)
-        startActivity(i)
+        /* Асинхронная подрузка жисона ретрофитом
+
+        hobbyObj.enqueue(Callback<HobbyObject> {
+           override fun onResponse(call: Call<List<HobbyObject>>, response: Response<List<HobbyObject>>) {
+                //log("response " + response.body().size())
+            }
+
+           override fun onFailure(call: Call<List<HobbyObject>>, t: Throwable) {
+
+            }
+        })
+
+         */
+
+        val retrAsyncTask = RetroAsyncTask(this)
+        retrAsyncTask.execute("http://188.225.46.84")
+
 
     }
 

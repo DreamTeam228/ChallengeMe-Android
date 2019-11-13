@@ -7,7 +7,16 @@ import kotlin.collections.ArrayList
 interface HobbyObjectInterface : Parcelable {
 
     fun getData()
-    fun setData()
+    fun setData(id: Int,
+                name: String,
+                category: String,
+                difficulty: Int,
+                description:String,
+                images: ArrayList<String>,
+                guide:String,
+                guideVideo: ArrayList<String>,
+                exercise: ArrayList<String>,
+                exerciseImage:ArrayList<String>)
 
     fun getName() : String
     fun getCategory(): String

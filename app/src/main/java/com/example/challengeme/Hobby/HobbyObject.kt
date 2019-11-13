@@ -21,6 +21,7 @@ class HobbyObject
      */
 
     private var observers: MutableList<HobbyObserverInterface> = ArrayList()
+    private var id: Int = 0
     private var name: String = "Name"
     private var category: String = "Category"
     private var difficulty: Int = 0
@@ -137,18 +138,40 @@ class HobbyObject
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun setData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun setData(id: Int,
+                         name: String,
+                         category: String,
+                         difficulty: Int,
+                         description:String,
+                         images: ArrayList<String>,
+                         guide:String,
+                         guideVideo: ArrayList<String>,
+                         exercise: ArrayList<String>,
+                         exerciseImage:ArrayList<String>) {
+
         /*
         заполняем поля
         после этого уведомляем наблюдателей
         наблюдатели обновляются
         *
          */
+
+        setName(name)
+        setCategory(category)
+        setDifficulty(difficulty)
+        setDescription(description)
+        setImages(images)
+        setGuide(guide)
+        setGuideVideo(guideVideo)
+        setExercise(exercise)
+        setExerciseImage(exerciseImage)
+        notifyObservers()
+
     }
 
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(id)
         parcel.writeString(name)
         parcel.writeString(category)
         parcel.writeInt(difficulty)

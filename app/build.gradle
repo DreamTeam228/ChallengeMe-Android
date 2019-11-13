@@ -47,4 +47,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include:['*.jar'])
     implementation "org.springframework.android:spring-android-rest-template:1.0.1.RELEASE"
     implementation "com.fasterxml.jackson.core:jackson-databind:2.3.2"
+
+    implementation'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
 }
