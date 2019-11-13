@@ -20,7 +20,6 @@ class HobbyObject
     либо объявить ее internal и обращаться, но это как-то bad practice
      */
 
-
     private var observers: MutableList<HobbyObserverInterface> = ArrayList()
     private var name: String = "Name"
     private var category: String = "Category"
