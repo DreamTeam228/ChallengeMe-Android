@@ -83,10 +83,14 @@ class RetroAsyncTask (var context: Context) : AsyncTask<String, Void, HobbyObjec
 
     override fun onPostExecute(result: HobbyObject?) {
         super.onPostExecute(result)
+        SplashScreenActivity.instance = result!!
         //var hobbyController: HobbyControllerInterface = HobbyController(result)
-        val i = Intent(context, MainActivity::class.java)
+
+        /*val i = Intent(context, MainActivity::class.java)
         i.putExtra(R.string.modelIntent.toString(), result)
-        startActivity(context,i, null)
+        startActivity(context,i, null)*/
+
+        startActivity(context, Intent(context, MainActivity::class.java), null)
 
     }
 }

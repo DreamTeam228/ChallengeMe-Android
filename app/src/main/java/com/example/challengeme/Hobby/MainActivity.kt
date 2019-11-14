@@ -15,6 +15,7 @@ import com.example.challengeme.Interfaces.Hobby.HobbyObserverInterface
 import com.example.challengeme.Interfaces.Markers.MapMarkerObjectInterface
 import com.example.challengeme.Markers.MapMarker
 import com.example.challengeme.R
+import com.example.challengeme.SplashScreenActivity
 
 var markers : ArrayList<MapMarker> = ArrayList()
 
@@ -43,7 +44,8 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        this.model = intent.getParcelableExtra(R.string.modelIntent.toString())!!
+        model = SplashScreenActivity.instance
+        //this.model = intent.getParcelableExtra(R.string.modelIntent.toString())!!
         controller = HobbyController(model)
         findViewElements()
         setViewElements()
@@ -66,7 +68,7 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
             // что-то мне подсказывает, что загрузка не должна осуществляться во view
             // но я согласна, что в сплэшэ она еще не нужна
 
-            controller.onMapButtonClick(this)
+           // controller.onMapButtonClick(this)
         }
         companyButton.setOnClickListener {
 

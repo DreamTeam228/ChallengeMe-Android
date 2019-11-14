@@ -3,6 +3,7 @@ package com.example.challengeme
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ProgressBar
+import com.example.challengeme.Hobby.HobbyObject
 
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -47,5 +48,18 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
 
+
+    companion object {
+        private var model : HobbyObject? = null
+
+        var instance: HobbyObject
+            get() {
+                if (model == null) model = HobbyObject()
+                return model!!
+            }
+            set(hobbyObj : HobbyObject) {
+                model = hobbyObj
+            }
+    }
 
 }
