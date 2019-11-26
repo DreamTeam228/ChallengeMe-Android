@@ -76,7 +76,7 @@ class RetroAsyncTask (var context: Context) : AsyncTask<String, Void, HobbyObjec
 
         } catch (e: Exception) {
             e.printStackTrace()
-            return null
+            return HobbyObject()
         }
 
     }

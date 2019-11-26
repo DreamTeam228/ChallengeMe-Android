@@ -1,7 +1,9 @@
 package com.example.challengeme.Hobby
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.widget.Button
 import android.widget.RatingBar
 import android.widget.TextView
@@ -14,14 +16,18 @@ import com.example.challengeme.Interfaces.Hobby.HobbyObjectInterface
 import com.example.challengeme.Interfaces.Hobby.HobbyObserverInterface
 import com.example.challengeme.Interfaces.Markers.MapMarkerObjectInterface
 import com.example.challengeme.Markers.MapMarker
+import com.example.challengeme.ProfileActivity
 import com.example.challengeme.R
 import com.example.challengeme.SplashScreenActivity
+import com.example.challengeme.data.LoginDataSource
+import com.example.challengeme.data.LoginRepository
+import com.example.challengeme.ui.login.LoginActivity
 
 var markers : ArrayList<MapMarker> = ArrayList()
 
 class MainActivity : AppCompatActivity(), HobbyObserverInterface {
 
-
+    val userRepository = LoginRepository(LoginDataSource())
     private lateinit var model: HobbyObjectInterface
     private lateinit var controller: HobbyControllerInterface
     private var fragmentManager: FragmentManager = supportFragmentManager
@@ -50,7 +56,21 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
         findViewElements()
         setViewElements()
 
+
     }
+    override fun onCreateOptionsMenu (menu: Menu) : Boolean {
+        menuInflater.inflate(R.menu.to_profile,menu)
+        val goProfile = menu.findItem(R.id.profile)
+         goProfile.setOnMenuItemClickListener {
+             if (userRepository.isLoggedIn)
+                 startActivity(Intent(this, ProfileActivity::class.java))
+             else startActivity (Intent(this, LoginActivity::class.java))
+             true // мы понятия не имеем, зачем, но по-другому не работает
+         }
+        return true
+    }
+
+
 
     // сопоставляем view с элементами Layout'a
     private fun findViewElements() {
@@ -71,6 +91,9 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
            // controller.onMapButtonClick(this)
         }
         companyButton.setOnClickListener {
+
+            // проверяю логин 
+            startActivity(Intent(this, LoginActivity::class.java))
 
         }
 
