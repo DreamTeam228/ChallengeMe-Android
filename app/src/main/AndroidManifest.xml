@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.challengeme">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -16,7 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:configChanges="orientation|screenSize"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".ProfileActivity"
             android:label="@string/title_activity_profile"
@@ -38,7 +41,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.challengeme.Hobby.MainActivity" />
         </activity>
-        <activity android:name=".SplashScreenActivity">
+        <activity
+            android:name=".SplashScreenActivity"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

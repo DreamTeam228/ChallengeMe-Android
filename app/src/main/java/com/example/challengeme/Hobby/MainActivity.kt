@@ -25,6 +25,10 @@ import com.example.challengeme.ui.login.LoginActivity
 
 var markers : ArrayList<MapMarker> = ArrayList()
 
+// Возможно стоит сделать логинРепозитори глобальным
+// Чтобы, например, при переходе в профиль не выпендриваться и сразу работать с имеющимися данными
+// Или чтобы брать данные о юзере из кэша в сплэшСкрине
+
 class MainActivity : AppCompatActivity(), HobbyObserverInterface {
 
     val userRepository = LoginRepository(LoginDataSource())
@@ -61,6 +65,7 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
     override fun onCreateOptionsMenu (menu: Menu) : Boolean {
         menuInflater.inflate(R.menu.to_profile,menu)
         val goProfile = menu.findItem(R.id.profile)
+        // А перед тем, как проверять зарегистрированность юзера, надо проверить, есть ли инфа о нём в кэше
          goProfile.setOnMenuItemClickListener {
              if (userRepository.isLoggedIn)
                  startActivity(Intent(this, ProfileActivity::class.java))
@@ -114,7 +119,7 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
 
     }
 
-    inner class PagerAdapter(fm: FragmentManager?) : FragmentStatePagerAdapter(fm) {
+    inner class PagerAdapter(fm: FragmentManager?) : FragmentStatePagerAdapter(fm!!) {
         override fun getItem(position: Int): Fragment {
             val image = model.getImages(position)
             val bundle = Bundle()
