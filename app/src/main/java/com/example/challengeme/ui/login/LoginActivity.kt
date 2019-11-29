@@ -134,6 +134,7 @@ class LoginActivity : AppCompatActivity() {
         val pref = getSharedPreferences(getText(R.string.userCache).toString(), Context.MODE_PRIVATE)
         val editor = pref.edit()
         editor.putString(getText(R.string.userCacheLogin).toString(), login)
+        editor.apply()
         editor.putString(getText(R.string.userCachePassword).toString(), password)
         editor.apply()
     }

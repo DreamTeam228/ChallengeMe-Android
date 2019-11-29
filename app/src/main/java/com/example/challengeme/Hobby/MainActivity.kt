@@ -22,6 +22,7 @@ import com.example.challengeme.SplashScreenActivity
 import com.example.challengeme.data.LoginDataSource
 import com.example.challengeme.data.LoginRepository
 import com.example.challengeme.data.globalData.hobbyModel
+import com.example.challengeme.data.globalData.userRepository
 import com.example.challengeme.ui.login.LoginActivity
 
 var markers : ArrayList<MapMarker> = ArrayList()
@@ -33,7 +34,6 @@ var markers : ArrayList<MapMarker> = ArrayList()
 
 class MainActivity : AppCompatActivity(), HobbyObserverInterface {
 
-    val userRepository = LoginRepository(LoginDataSource())
     private lateinit var model: HobbyObjectInterface
     private lateinit var controller: HobbyControllerInterface
     private var fragmentManager: FragmentManager = supportFragmentManager
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
         val goProfile = menu.findItem(R.id.profile)
         // А перед тем, как проверять зарегистрированность юзера, надо проверить, есть ли инфа о нём в кэше
          goProfile.setOnMenuItemClickListener {
-             if (userRepository.isLoggedIn)
+             if (userRepository.instance.isLoggedIn)
                  startActivity(Intent(this, ProfileActivity::class.java))
              else startActivity (Intent(this, LoginActivity::class.java))
              true // мы понятия не имеем, зачем, но по-другому не работает

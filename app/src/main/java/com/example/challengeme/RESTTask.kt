@@ -10,6 +10,7 @@ import com.example.challengeme.Hobby.HobbyObject
 import com.example.challengeme.Hobby.MainActivity
 import com.example.challengeme.Interfaces.Hobby.HobbyControllerInterface
 import com.example.challengeme.Interfaces.HobbyApi
+import com.example.challengeme.data.globalData.hobbyModel
 import org.springframework.http.*
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 import org.springframework.web.client.RestTemplate
@@ -83,7 +84,7 @@ class RetroAsyncTask (var context: Context) : AsyncTask<String, Void, HobbyObjec
 
     override fun onPostExecute(result: HobbyObject?) {
         super.onPostExecute(result)
-        SplashScreenActivity.instance = result!!
+        hobbyModel.instance = result!!
         //var hobbyController: HobbyControllerInterface = HobbyController(result)
 
         /*val i = Intent(context, MainActivity::class.java)
