@@ -1,6 +1,7 @@
 package com.example.challengeme.ui.login
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -62,6 +63,10 @@ class LoginActivity : AppCompatActivity() {
                 // т.к. мы переходим в профиль приуспешном входе
                 // и это происходит здесь
                 // finish()
+
+                // Сохранение в кэш
+                saveUser(username.text.toString(), password.text.toString())
+
                 startActivity(Intent(baseContext, ProfileActivity::class.java))
             }
             // подумать над закрытием этого активити - если будет возвращаться сюда - закрываем его
@@ -123,6 +128,14 @@ class LoginActivity : AppCompatActivity() {
 
     private fun showLoginFailed(@StringRes errorString: Int) {
         Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun saveUser(login : String, password : String) {
+        val pref = getSharedPreferences(getText(R.string.userCache).toString(), Context.MODE_PRIVATE)
+        val editor = pref.edit()
+        editor.putString(getText(R.string.userCacheLogin).toString(), login)
+        editor.putString(getText(R.string.userCachePassword).toString(), password)
+        editor.apply()
     }
 }
 

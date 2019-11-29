@@ -21,6 +21,7 @@ import com.example.challengeme.R
 import com.example.challengeme.SplashScreenActivity
 import com.example.challengeme.data.LoginDataSource
 import com.example.challengeme.data.LoginRepository
+import com.example.challengeme.data.globalData.hobbyModel
 import com.example.challengeme.ui.login.LoginActivity
 
 var markers : ArrayList<MapMarker> = ArrayList()
@@ -28,6 +29,7 @@ var markers : ArrayList<MapMarker> = ArrayList()
 // Возможно стоит сделать логинРепозитори глобальным
 // Чтобы, например, при переходе в профиль не выпендриваться и сразу работать с имеющимися данными
 // Или чтобы брать данные о юзере из кэша в сплэшСкрине
+
 
 class MainActivity : AppCompatActivity(), HobbyObserverInterface {
 
@@ -54,7 +56,7 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        model = SplashScreenActivity.instance
+        model = hobbyModel.instance
         //this.model = intent.getParcelableExtra(R.string.modelIntent.toString())!!
         controller = HobbyController(model)
         findViewElements()

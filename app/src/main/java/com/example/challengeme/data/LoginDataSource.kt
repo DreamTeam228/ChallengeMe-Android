@@ -11,7 +11,8 @@ class LoginDataSource {
     fun login(username: String, password: String): Result<LoggedInUser> {
         try {
             // TODO: handle loggedInUser authentication
-            val fakeUser = LoggedInUser(java.util.UUID.randomUUID().toString(), "Developer")
+            checkLogin(username, password)
+            val fakeUser = LoggedInUser(username, password)
             return Result.Success(fakeUser)
         } catch (e: Throwable) {
             return Result.Error(IOException("Error logging in", e))
@@ -22,10 +23,10 @@ class LoginDataSource {
         // TODO: revoke authentication
     }
 
-    private fun checkLogin (login: String, password: String) {
+    private fun checkLogin (username: String, password: String) {
         // Проверяем наличие юзера в базах и правильность пароля
-        // ЕСли нет, кидай ошибку
-        // если да, собираем сразу юзера LoggedInUser
+        // ЕСли нет, кидай ошибку (Result.error)
+        // если да, собираем сразу юзера LoggedInUser (Result.success)
     }
 }
 

@@ -1,9 +1,10 @@
 package com.example.challengeme
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ProgressBar
-import com.example.challengeme.Hobby.HobbyObject
+import com.example.challengeme.data.globalData.userRepository
 
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -41,25 +42,24 @@ class SplashScreenActivity : AppCompatActivity() {
 
          */
 
+        loadUser()
+
         val retrAsyncTask = RetroAsyncTask(this)
         retrAsyncTask.execute("http://188.225.46.84")
 
 
     }
 
+    private fun loadUser() {
+        val pref = getSharedPreferences(getText(R.string.userCache).toString(), Context.MODE_PRIVATE)
+        val login = pref.getString(getText(R.string.userCacheLogin).toString(), null)
+        val password = pref.getString(getText(R.string.userCachePassword).toString(), null)
 
-
-    companion object {
-        private var model : HobbyObject? = null
-
-        var instance: HobbyObject
-            get() {
-                if (model == null) model = HobbyObject()
-                return model!!
-            }
-            set(hobbyObj : HobbyObject) {
-                model = hobbyObj
-            }
+        if(login != null && password != null) {
+            userRepository.instance.login(login, password)
+        }
+        // Если логин и пароль != 0, отправляем пост-запрос на сервер
+        // Если возвращается значение - собираем юзера в репозитории (userRepository.login(login, password))
+        // Если нулл - ничего не делаем
     }
-
 }

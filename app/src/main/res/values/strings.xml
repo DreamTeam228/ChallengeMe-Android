@@ -39,4 +39,7 @@
     <string name="title_dashboard">QR-код</string>
     <string name="title_notifications">Чат</string>
     <string name="profileTitle">Профиль</string>
+    <string name="userCache">userCache</string>
+    <string name="userCacheLogin">userCacheLogin</string>
+    <string name="userCachePassword">userCachePassword</string>
 </resources>
