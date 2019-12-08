@@ -13,7 +13,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
-import com.example.challengeme.ProfileActivity
+import com.example.challengeme.ui.ProfileActivity
 
 import com.example.challengeme.R
 

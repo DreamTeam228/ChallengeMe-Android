@@ -1,4 +1,4 @@
-package com.example.challengeme.Hobby
+package com.example.challengeme.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,16 +11,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.example.challengeme.Hobby.HobbyController
+import com.example.challengeme.Hobby.ImageFragment
 import com.example.challengeme.Interfaces.Hobby.HobbyControllerInterface
 import com.example.challengeme.Interfaces.Hobby.HobbyObjectInterface
 import com.example.challengeme.Interfaces.Hobby.HobbyObserverInterface
-import com.example.challengeme.Interfaces.Markers.MapMarkerObjectInterface
 import com.example.challengeme.Markers.MapMarker
-import com.example.challengeme.ProfileActivity
 import com.example.challengeme.R
-import com.example.challengeme.SplashScreenActivity
-import com.example.challengeme.data.LoginDataSource
-import com.example.challengeme.data.LoginRepository
 import com.example.challengeme.data.globalData.hobbyModel
 import com.example.challengeme.data.globalData.userRepository
 import com.example.challengeme.ui.login.LoginActivity

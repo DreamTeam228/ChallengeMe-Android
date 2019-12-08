@@ -1,17 +1,14 @@
 package com.example.challengeme.Hobby
 
-import android.app.Activity
-import android.app.Application
 import android.content.Context
 import android.content.Intent
-import android.os.Parcelable
 import androidx.core.content.ContextCompat.startActivity
 import com.example.challengeme.Interfaces.Hobby.HobbyControllerInterface
 import com.example.challengeme.Interfaces.Hobby.HobbyObjectInterface
 import com.example.challengeme.Interfaces.Markers.MapMarkerObjectInterface
-import com.example.challengeme.Markers.MapMarkerObject
-import com.example.challengeme.Markers.MapsActivity
+import com.example.challengeme.ui.MapsActivity
 import com.example.challengeme.R
+import com.example.challengeme.ui.MainActivity
 
 // private const val INTENT_TAG = "model" - R.string.modelIntent
 

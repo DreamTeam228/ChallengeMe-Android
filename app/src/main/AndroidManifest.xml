@@ -21,28 +21,28 @@
         android:configChanges="orientation|screenSize"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".ProfileActivity"
+            android:name=".ui.ProfileActivity"
             android:label="@string/title_activity_profile"
-            android:parentActivityName=".Hobby.MainActivity">
+            android:parentActivityName=".ui.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.challengeme.Hobby.MainActivity" />
+                android:value="com.example.challengeme.ui.MainActivity" />
         </activity>
         <activity android:name=".ui.login.RegistrationActivity"
             android:label="Регистрация"
-            android:parentActivityName=".Hobby.MainActivity">
+            android:parentActivityName=".ui.MainActivity">
 
         </activity>
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login"
-            android:parentActivityName=".Hobby.MainActivity">
+            android:parentActivityName=".ui.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.challengeme.Hobby.MainActivity" />
+                android:value="com.example.challengeme.ui.MainActivity" />
         </activity>
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".ui.SplashScreenActivity"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -63,9 +63,9 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".Markers.MapsActivity"
+            android:name=".ui.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".Hobby.MainActivity" />
+        <activity android:name=".ui.MainActivity" />
     </application>
 
 </manifest>

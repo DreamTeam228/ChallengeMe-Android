@@ -3,9 +3,6 @@ package com.example.challengeme.ui.login
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
@@ -13,7 +10,6 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.challengeme.ProfileActivity
 import com.example.challengeme.R
 
 class RegistrationActivity : AppCompatActivity() {

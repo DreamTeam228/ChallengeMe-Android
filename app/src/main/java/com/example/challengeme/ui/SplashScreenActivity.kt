@@ -1,9 +1,11 @@
-package com.example.challengeme
+package com.example.challengeme.ui
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ProgressBar
+import com.example.challengeme.R
+import com.example.challengeme.RetroAsyncTask
 import com.example.challengeme.data.globalData.userRepository
 
 

@@ -5,10 +5,8 @@ import android.content.Intent
 import android.os.AsyncTask
 import android.util.Base64
 import androidx.core.content.ContextCompat.startActivity
-import com.example.challengeme.Hobby.HobbyController
 import com.example.challengeme.Hobby.HobbyObject
-import com.example.challengeme.Hobby.MainActivity
-import com.example.challengeme.Interfaces.Hobby.HobbyControllerInterface
+import com.example.challengeme.ui.MainActivity
 import com.example.challengeme.Interfaces.HobbyApi
 import com.example.challengeme.data.globalData.hobbyModel
 import org.springframework.http.*

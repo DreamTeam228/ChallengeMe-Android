@@ -33,7 +33,7 @@
     <string name="invalid_username">Некорректный e-mail адрес</string>
     <string name="invalid_password">Пароль должен содержать больше 6 символов</string>
     <string name="login_failed">Не удалось авторизоваться</string>
-    <string name="toRegistration">Все еще нет аккаунта? Скорее зарегистрируйтесь!</string>
+    <string name="toRegistration"><u>Все еще нет аккаунта? Скорее зарегистрируйтесь!</u></string>
     <string name="title_activity_profile">Профиль</string>
     <string name="title_home">Профиль</string>
     <string name="title_dashboard">QR-код</string>
@@ -42,4 +42,11 @@
     <string name="userCache">userCache</string>
     <string name="userCacheLogin">userCacheLogin</string>
     <string name="userCachePassword">userCachePassword</string>
+    <string name="showAllUserChallenges"><u>Показать все выполненные Челленджи</u></string>
+    <string name="UserAchievementsTitle">Мои Достижения</string>
+    <string name="userChallengesTitle">Мои Челленджи</string>
+    <string name="UserDisplayNameField">Имя:</string>
+    <string name="userDisplayCityField">Город:</string>
+    <string name="userDisplayRangField">Ранг:</string>
+    <string name="UserAboutTitle">О себе</string>
 </resources>
