@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ProgressBar
 import com.example.challengeme.R
-import com.example.challengeme.RetroAsyncTask
+import com.example.challengeme.AsynchronousRequests.HobbyAsyncTask
 import com.example.challengeme.data.globalData.userRepository
 
 
@@ -46,7 +46,8 @@ class SplashScreenActivity : AppCompatActivity() {
 
         loadUser()
 
-        val retrAsyncTask = RetroAsyncTask(this)
+        val retrAsyncTask =
+            HobbyAsyncTask(this)
         retrAsyncTask.execute("http://188.225.46.84")
 
 

@@ -10,7 +10,6 @@ class MapMarker(val lat:Double,val lng:Double, val name:String, val category: St
         parcel.readDouble(),
         parcel.readString()!!,
         parcel.readString()!!
-
     )
 
     // создает объект-метку для карты

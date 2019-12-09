@@ -1,4 +1,4 @@
-package com.example.challengeme.Interfaces;
+package com.example.challengeme.Interfaces.Retrofit;
 
 import com.example.challengeme.Hobby.HobbyObject;
 

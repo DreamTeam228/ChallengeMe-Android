@@ -1,4 +1,4 @@
-package com.example.challengeme.ui.login
+package com.example.challengeme.ui.registration
 
 import android.app.Activity
 import android.content.Intent
@@ -11,10 +11,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.challengeme.R
+import com.example.challengeme.ui.login.*
 
 class RegistrationActivity : AppCompatActivity() {
 
-    private lateinit var loginViewModel: LoginViewModel
+    private lateinit var registrationViewModel: RegistrationViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,34 +27,37 @@ class RegistrationActivity : AppCompatActivity() {
         val loading = findViewById<ProgressBar>(R.id.loading)
 
 
-        loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
-            .get(LoginViewModel::class.java)
+        registrationViewModel = ViewModelProviders.of(this,
+            RegistrationViewModelFactory()
+        )
+            .get(RegistrationViewModel::class.java)
 
-        loginViewModel.loginFormState.observe(this@RegistrationActivity, Observer {
-            val loginState = it ?: return@Observer
+        registrationViewModel.registrationFormState.observe(this@RegistrationActivity, Observer {
+            val registrationState = it ?: return@Observer
             //отслеживает ввод в  поля, блокирует кнопку, выводит сообщения об ошибке
 
             // disable login button unless both username / password is valid
-            signup.isEnabled = loginState.isDataValid
+            signup.isEnabled = registrationState.isDataValid
 
-            if (loginState.usernameError != null) {
-                username.error = getString(loginState.usernameError)
+            if (registrationState.usernameError != null) {
+                username.error = getString(registrationState.usernameError)
             }
-            if (loginState.passwordError != null) {
-                password.error = getString(loginState.passwordError)
+            if (registrationState.passwordError != null) {
+                password.error = getString(registrationState.passwordError)
             }
         })
 
-        loginViewModel.loginResult.observe(this@RegistrationActivity, Observer {
-            val loginResult = it ?: return@Observer
+        registrationViewModel.registrationResult.observe(this@RegistrationActivity, Observer {
+            val registrationResult = it ?: return@Observer
 
             loading.visibility = View.GONE
-            if (loginResult.error != null) {
-                showLoginFailed(loginResult.error)
+            if (registrationResult.error != null) {
+                showRegistrationResult(registrationResult.error)
             }
-            if (loginResult.success != null) {
-                updateUiWithUser(loginResult.success)
-                startActivity(Intent(this,LoginActivity::class.java))
+            if (registrationResult.success != null) {
+                showRegistrationResult(registrationResult.success)
+                startActivity(Intent(this,
+                    LoginActivity::class.java))
             }
             // подумать над закрытием этого активити - если будет возвращаться сюда - закрываем его
             setResult(Activity.RESULT_OK)
@@ -63,7 +67,7 @@ class RegistrationActivity : AppCompatActivity() {
         })
 
         username.afterTextChanged {
-            loginViewModel.loginDataChanged(
+            registrationViewModel.registrationDataChanged(
                 username.text.toString(),
                 password.text.toString()
             )
@@ -71,7 +75,7 @@ class RegistrationActivity : AppCompatActivity() {
 
         password.apply {
             afterTextChanged {
-                loginViewModel.loginDataChanged(
+                registrationViewModel.registrationDataChanged(
                     username.text.toString(),
                     password.text.toString()
                 )
@@ -81,12 +85,8 @@ class RegistrationActivity : AppCompatActivity() {
                 when (actionId) {
                     // Вызывает метод логин репозитория по нажатию на клавишу ОК
                     EditorInfo.IME_ACTION_DONE ->
-                        true
-                        // Регистрируем пользователя через метод регистрации в loginViewModel
-                       /* loginViewModel.login(
-                            username.text.toString(),
-                            password.text.toString()
-                        )*/
+                        // Регистрируем пользователя через метод регистрации в registrationViewModel
+                    registrationViewModel.login(username.text.toString(), password.text.toString())
                 }
                 false
             }
@@ -96,7 +96,7 @@ class RegistrationActivity : AppCompatActivity() {
                 loading.visibility = View.VISIBLE
 
                 //Регистрируем пользователя через метод регистрации в loginViewModel
-               // loginViewModel.login(username.text.toString(), password.text.toString())
+                registrationViewModel.login(username.text.toString(), password.text.toString())
 
             }
         }
@@ -113,8 +113,9 @@ class RegistrationActivity : AppCompatActivity() {
         ).show()
     }
 
-    private fun showLoginFailed(@StringRes errorString: Int) {
-        Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
+    private fun showRegistrationResult(@StringRes resultString: Int) {
+        Toast.makeText(applicationContext, resultString, Toast.LENGTH_SHORT).show()
     }
+
 }
 

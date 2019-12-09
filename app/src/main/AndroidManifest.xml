@@ -28,7 +28,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.challengeme.ui.MainActivity" />
         </activity>
-        <activity android:name=".ui.login.RegistrationActivity"
+        <activity android:name=".ui.registration.RegistrationActivity"
             android:label="Регистрация"
             android:parentActivityName=".ui.MainActivity">
 
