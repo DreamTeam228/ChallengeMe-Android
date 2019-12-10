@@ -33,7 +33,7 @@ class RegistrationViewModel : ViewModel() {
         } else if (!isPasswordValid(password)) {      // проверяем валидность пароля
             _registrationForm.value = RegistrationFormState(passwordError = R.string.invalid_password)  // присваиваем состояние ошибки
         } else if (!isDisplayNameValid(displayName)) {      // проверяем валидность пароля
-            _registrationForm.value = RegistrationFormState(passwordError = R.string.invalid_displayName)  // присваиваем состояние ошибки
+            _registrationForm.value = RegistrationFormState(displayNameError = R.string.invalid_displayName)  // присваиваем состояние ошибки
         } else {
             _registrationForm.value = RegistrationFormState(isDataValid = true)   //если все ок - меняем флаг, который разблокирует кнопку
         }

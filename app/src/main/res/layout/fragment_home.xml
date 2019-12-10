@@ -12,7 +12,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -38,9 +38,10 @@
                         <!-- YOUR CONTENT -->
 
                         <ImageView
-                            android:id="@+id/userAvatar_ImageView"
+                            android:id="@+id/userProfilePicture_ImageView"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
                             tools:srcCompat="@tools:sample/avatars[3]" />
                     </com.github.florent37.shapeofview.shapes.CircleView>
 
@@ -66,7 +67,7 @@
                     android:text="UserRang"
                     android:textAppearance="@style/CM_text_style"
                     app:layout_constraintStart_toEndOf="@+id/userRang_Title"
-                    app:layout_constraintTop_toBottomOf="@+id/userCity_TextView" />
+                    app:layout_constraintTop_toBottomOf="@+id/userPosition_TextView" />
 
                 <TextView
                     android:id="@+id/userRang_Title"
@@ -80,7 +81,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/userCity_Title" />
 
                 <TextView
-                    android:id="@+id/userCity_TextView"
+                    android:id="@+id/userPosition_TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -124,7 +125,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/aboutTitle" />
 
                 <ProgressBar
-                    android:id="@+id/progressBar2"
+                    android:id="@+id/userRang_progressBar"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="100sp"
                     android:layout_height="wrap_content"
@@ -167,12 +168,22 @@
                         android:textAppearance="@style/CM_text_style" />
 
                     <ImageView
-                        android:id="@+id/imageView3"
+                        android:id="@+id/lastChallengePic_iv"
                         android:layout_width="wrap_content"
                         android:layout_height="100sp"
                         android:layout_marginTop="8sp"
                         android:layout_marginBottom="8sp"
                         app:srcCompat="@drawable/tmp_image" />
+
+                    <RatingBar
+                        android:id="@+id/lastChallengeDiff_pb"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:max="5"
+                        android:numStars="5"
+                        android:stepSize="1" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -193,47 +204,17 @@
                 android:text="@string/UserAchievementsTitle"
                 android:textAppearance="@style/CM_body_label" />
 
-            <LinearLayout
+            <include
+                layout="@layout/item_achievements"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/viewMoreAchievements_Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <FrameLayout
-                    android:id="@+id/seeMoreAchievements_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16sp"
-                    android:layout_marginTop="8sp"
-                    android:layout_marginBottom="8sp">
-
-                    <com.github.florent37.shapeofview.shapes.CircleView
-                        android:id="@+id/miniAchievementForm"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:elevation="4dp"
-                        app:shape_circle_borderColor="@color/colorAccent"
-                        app:shape_circle_borderWidth="2dp">
-
-                        <!-- YOUR CONTENT -->
-
-                        <ImageView
-                            android:id="@+id/miniAchievement_ImageView"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            tools:srcCompat="@color/colorPrimaryDark" />
-                    </com.github.florent37.shapeofview.shapes.CircleView>
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                </FrameLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="58sp"
-                    android:orientation="horizontal"
-                    tools:listitem="@layout/item_mini_achievement" />
-
-            </LinearLayout>
+                android:text="@string/viewMoreAchievements"
+                android:textAlignment="center" />
 
         </LinearLayout>
     </ScrollView>

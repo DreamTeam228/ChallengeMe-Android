@@ -39,6 +39,10 @@ class RegistrationActivity : AppCompatActivity() {
             // disable login button unless both username / password is valid
             signup.isEnabled = registrationState.isDataValid
 
+
+            if (registrationState.displayNameError != null) {
+                displayName.error = getString(registrationState.displayNameError)
+            }
             if (registrationState.usernameError != null) {
                 username.error = getString(registrationState.usernameError)
             }

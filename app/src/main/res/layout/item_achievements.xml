@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
-        android:id="@+id/userAvatar_ImageView"
+        android:id="@+id/lastAchievement_iv"
         tools:srcCompat="@tools:sample/avatars[3]"
         android:layout_width="50sp"
         android:layout_height="50sp"
@@ -21,7 +21,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/itemAchievementName_TextView"
+            android:id="@+id/lastAchievementTitle_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8sp"
@@ -30,7 +30,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/itemAchievementText"
+            android:id="@+id/lastAchievementText_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8sp"

@@ -1,8 +1,8 @@
 package com.example.challengeme.User
 
-data class UserAchievement (
-    val id : Int,
-    val name: String,
-    val description : String,
-    val image : String
-)
+class UserAchievement {
+    var id: Int = 0
+    lateinit var name: String
+    lateinit var description: String
+    lateinit var image: String
+}

@@ -52,4 +52,5 @@
     <string name="userDisplayCityField">Город:</string>
     <string name="userDisplayRangField">Ранг:</string>
     <string name="UserAboutTitle">О себе</string>
+    <string name="viewMoreAchievements"><u>Показать все полученные достижения</u></string>
 </resources>

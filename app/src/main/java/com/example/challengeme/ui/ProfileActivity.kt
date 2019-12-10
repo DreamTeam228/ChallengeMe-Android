@@ -14,19 +14,12 @@ import com.example.challengeme.ui.login.LoggedInUserView
 
 class ProfileActivity : AppCompatActivity() {
 
-    private lateinit var userInfo: LoggedInUserView
-    private val user: LoggedInUser? = userRepository.instance.user
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
-
-
-        userInfo = LoggedInUserView(user!!.displayName, user.position,
-                                    user.userLevel, user.challengeCount,
-                                    user.lastChallenge, user.lastAchievement,
-                                    user.profilePicture)
 
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
