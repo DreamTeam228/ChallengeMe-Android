@@ -20,7 +20,7 @@ class RegistrationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
-        val name = findViewById<EditText>(R.id.nameReg)
+        val displayName = findViewById<EditText>(R.id.nameReg)
         val username = findViewById<EditText>(R.id.usernameReg)
         val password = findViewById<EditText>(R.id.passwordReg)
         val signup = findViewById<Button>(R.id.registrationButton)
@@ -66,18 +66,30 @@ class RegistrationActivity : AppCompatActivity() {
             finish()
         })
 
+
+        displayName.afterTextChanged {
+            registrationViewModel.registrationDataChanged(
+                username.text.toString(),
+                password.text.toString(),
+                displayName.text.toString()
+            )
+        }
+
         username.afterTextChanged {
             registrationViewModel.registrationDataChanged(
                 username.text.toString(),
-                password.text.toString()
+                password.text.toString(),
+                displayName.text.toString()
             )
+            // checking post here
         }
 
         password.apply {
             afterTextChanged {
                 registrationViewModel.registrationDataChanged(
                     username.text.toString(),
-                    password.text.toString()
+                    password.text.toString(),
+                    displayName.text.toString()
                 )
             }
 
@@ -101,16 +113,6 @@ class RegistrationActivity : AppCompatActivity() {
             }
         }
 
-    }
-
-    private fun updateUiWithUser(model: LoggedInUserView) {
-        val welcome = getString(R.string.sign_up_success)
-        // TODO : initiate successful logged in experience
-        Toast.makeText(
-            applicationContext,
-            welcome,
-            Toast.LENGTH_LONG
-        ).show()
     }
 
     private fun showRegistrationResult(@StringRes resultString: Int) {

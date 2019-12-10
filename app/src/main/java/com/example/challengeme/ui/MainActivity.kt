@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.example.challengeme.Hobby.HobbyController
 import com.example.challengeme.Hobby.ImageFragment
@@ -20,7 +23,9 @@ import com.example.challengeme.Markers.MapMarker
 import com.example.challengeme.R
 import com.example.challengeme.data.globalData.hobbyModel
 import com.example.challengeme.data.globalData.userRepository
+import com.example.challengeme.ui.Adapters.VideoAdapter
 import com.example.challengeme.ui.login.LoginActivity
+import java.lang.StringBuilder
 
 var markers : ArrayList<MapMarker> = ArrayList()
 
@@ -49,6 +54,10 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
     private lateinit var mapButton: Button
     private lateinit var companyButton: Button
 
+    private lateinit var recycler : RecyclerView
+    private lateinit var viewAdapter : RecyclerView.Adapter<*>
+    private lateinit var viewManager : RecyclerView.LayoutManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -58,7 +67,6 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
         controller = HobbyController(model)
         findViewElements()
         setViewElements()
-
 
     }
     override fun onCreateOptionsMenu (menu: Menu) : Boolean {
@@ -84,8 +92,10 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
         descriptionTextView = findViewById(R.id.description_tv)
         image_pager = findViewById(R.id.image_vp)
         guideTextView = findViewById(R.id.guide_tv)
+        exerciseTextView = findViewById(R.id.exercise_tv)
         mapButton = findViewById(R.id.open_map_button)
         companyButton = findViewById(R.id.find_people_button)
+        recycler = findViewById<RecyclerView>(R.id.video_recyclerView)
 
         mapButton.setOnClickListener{
             // думаю надо сделать загрузку мапМаркеров именно тут а не в сплэше
@@ -100,7 +110,6 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
             startActivity(Intent(this, LoginActivity::class.java))
 
         }
-
     }
     // заполняем view
     private fun setViewElements() {
@@ -110,6 +119,21 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
         descriptionTextView.text = model.getDescription()
         image_pager.adapter = PagerAdapter(fragmentManager)
         guideTextView.text = model.getGuide()
+
+        val strBuilder = StringBuilder()
+        for(i in 0 until model.getExercises().size) {
+            strBuilder.append("${i + 1}. ${model.getExercise(i)}\n")
+        }
+        exerciseTextView.text = strBuilder
+
+
+        viewManager = LinearLayoutManager(this)
+        viewAdapter = VideoAdapter(this, model.getVideoArray(), lifecycle)
+
+        recycler.apply {
+            recycler.adapter = viewAdapter
+            recycler.layoutManager = viewManager
+        }
 
     }
 

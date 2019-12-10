@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.challengeme.R
 
@@ -28,6 +29,34 @@ class QRCodeFragment : Fragment() {
         qrCodeViewModel.text.observe(this, Observer {
             textView.text = it
         })*/
+
+
+        qrCodeViewModel.qrCodeString.observe(this, Observer {
+            val registrationState = it ?: return@Observer
+
+            // рисуем куАр код
+
+        })
+
+
+
+        qrButton.setOnClickListener {
+            // Тут запускаем генерацию куАрКода
+
+            /*loading.visibility = View.VISIBLE
+
+            qrCodeViewModel.методГенерацииКуар*/
+        }
+
         return root
+
     }
+
+
+
+
+    // По нажатию на кнопку - изменяем поле во ВьюМодел
+    // В активити подписываемся на изменение значения этого поля
+    // При изменении этого значения рисуем картинку куАр
+
 }

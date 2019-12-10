@@ -33,9 +33,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     fun loginDataChanged(username: String, password: String) {
         if (!isUserNameValid(username)) { // проверям валидность логина
-            _loginForm.value = LoginFormState(usernameError = R.string.invalid_username)  // присваем состояние ошибки
+            _loginForm.value = LoginFormState(usernameError = R.string.empty_field)  // присваем состояние ошибки
         } else if (!isPasswordValid(password)) {      // проверяем валидность пароля
-            _loginForm.value = LoginFormState(passwordError = R.string.invalid_password)  // присваиваем состояние ошибки
+            _loginForm.value = LoginFormState(passwordError = R.string.empty_field)  // присваиваем состояние ошибки
         } else {
             _loginForm.value = LoginFormState(isDataValid = true)   //если все ок - меняем флаг, который разблокирует кнопку
         }
@@ -43,15 +43,11 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     // A placeholder username validation check
     private fun isUserNameValid(username: String): Boolean {
-        return if (username.contains('@')) {
-            Patterns.EMAIL_ADDRESS.matcher(username).matches()
-        } else {
-            username.isNotBlank()
-        }
+        return username.isNotBlank()
     }
 
     // A placeholder password validation check
     private fun isPasswordValid(password: String): Boolean {
-        return password.length > 6
+        return password.isNotBlank()
     }
 }

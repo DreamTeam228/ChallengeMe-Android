@@ -25,7 +25,9 @@ interface HobbyObjectInterface : Parcelable {
     fun getImages(position: Int) : String
     fun getGuide(): String
     fun getGuideVideo(position: Int) : String
+    fun getVideoArray() : ArrayList<String>
     fun getExercise(position: Int): String
+    fun getExercises() : ArrayList<String>
     fun getExerciseImage(position: Int): String
     fun getImageSize(): Int
     fun getGuideVideoSize(): Int

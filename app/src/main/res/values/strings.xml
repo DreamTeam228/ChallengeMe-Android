@@ -31,8 +31,10 @@
     <string name="welcome">Добро пожаловать,</string>
     <string name="sign_up_success">Регистрация прошла успешно! Можете авторизоваться :)</string>
     <string name="registration_failed">Регистрация не удалась :(</string>
-    <string name="invalid_username">Некорректный e-mail адрес</string>
-    <string name="invalid_password">Пароль должен содержать больше 6 символов</string>
+    <string name="invalid_username">Некорректный e-mail адрес!</string>
+    <string name="invalid_password">Пароль должен содержать больше 4 символов!</string>
+    <string name="invalid_displayName">Имя должно содержать больше 4 символов!</string>
+    <string name="empty_field">Пустое поле!</string>
     <string name="login_failed">Не удалось авторизоваться</string>
     <string name="toRegistration"><u>Все еще нет аккаунта? Скорее зарегистрируйтесь!</u></string>
     <string name="title_activity_profile">Профиль</string>

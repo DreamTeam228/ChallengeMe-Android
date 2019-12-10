@@ -5,7 +5,6 @@ import com.example.challengeme.data.model.LoggedInUser
 import org.springframework.http.*
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 import org.springframework.web.client.RestTemplate
-import java.io.IOException
 
 class RESTAuthAsyncTask(val username : String, val password : String) : AsyncTask<String, Void, LoggedInUser>() {
     override fun doInBackground(vararg url: String): LoggedInUser? {

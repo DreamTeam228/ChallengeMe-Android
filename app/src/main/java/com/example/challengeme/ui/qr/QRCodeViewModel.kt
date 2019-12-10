@@ -11,6 +11,11 @@ class QRCodeViewModel : ViewModel() {
     //на сервере можно раздербанить, посмотреть валидность (что это не кр-код 3 дневной давности) и оперировать
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"
+            // Генерируем куАр строку
     }
-    val text: LiveData<String> = _text
+
+    val qrCodeString: LiveData<String> = _text
+
+
+    // метод генерации
 }

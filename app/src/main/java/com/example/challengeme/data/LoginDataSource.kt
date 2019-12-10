@@ -32,7 +32,7 @@ class LoginDataSource {
         val loggedInUser = RESTAuthAsyncTask(
             username,
             password
-        ).execute("http://188.225.46.84/login").get()
+        ).execute("http://188.225.46.84/json123").get()
         if(loggedInUser == null) {
             throw Exception()
         } else {

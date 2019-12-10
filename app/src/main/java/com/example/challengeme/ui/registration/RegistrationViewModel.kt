@@ -27,14 +27,20 @@ class RegistrationViewModel : ViewModel() {
 
     }
 
-    fun registrationDataChanged(username: String, password: String) {
+    fun registrationDataChanged(username: String, password: String, displayName: String) {
         if (!isUserNameValid(username)) { // проверям валидность логина
             _registrationForm.value = RegistrationFormState(usernameError = R.string.invalid_username)  // присваем состояние ошибки
         } else if (!isPasswordValid(password)) {      // проверяем валидность пароля
             _registrationForm.value = RegistrationFormState(passwordError = R.string.invalid_password)  // присваиваем состояние ошибки
+        } else if (!isDisplayNameValid(displayName)) {      // проверяем валидность пароля
+            _registrationForm.value = RegistrationFormState(passwordError = R.string.invalid_displayName)  // присваиваем состояние ошибки
         } else {
             _registrationForm.value = RegistrationFormState(isDataValid = true)   //если все ок - меняем флаг, который разблокирует кнопку
         }
+    }
+
+    private fun isDisplayNameValid(displayName: String): Boolean {
+        return displayName.length > 4
     }
 
     // A placeholder username validation check
@@ -48,6 +54,6 @@ class RegistrationViewModel : ViewModel() {
 
     // A placeholder password validation check
     private fun isPasswordValid(password: String): Boolean {
-        return password.length > 6
+        return password.length > 4
     }
 }

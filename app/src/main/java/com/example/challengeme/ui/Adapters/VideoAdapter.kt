@@ -3,12 +3,17 @@ package com.example.challengeme.ui.Adapters
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.RecyclerView
 import com.example.challengeme.R
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 
 
-class VideoAdapter internal constructor(context: Context, private var elements: ArrayList<String>, val filter: String) :
+class VideoAdapter internal constructor(val context: Context, private var elements: ArrayList<String>, private val lifeCycle : Lifecycle) :
     RecyclerView.Adapter<VideoAdapter.ViewHolder>() {
     private val inflater: LayoutInflater
     init {
@@ -27,57 +32,21 @@ class VideoAdapter internal constructor(context: Context, private var elements: 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         Log.d("VIEWHOLDER_POSITION", "POSITION IS $position")
 
-        youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
-            fun onReady(youTubePlayer: YouTubePlayer) {
-                val videoId = "S0Q4gqBUs7c"
-                youTubePlayer.loadVideo(videoId, 0)
+
+        //lifeCycle.addObserver(viewHolder.youTubePlayerView)
+        viewHolder.youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                val videoId = elements[position]
+                //val videoId = "dQw4w9WgXcQ"
+                youTubePlayer.loadVideo(videoId, 0f)
+                youTubePlayer.pause()
             }
         })
-
-        val element = elements[position]
-        viewHolder.checkBox.text = element.text
-        viewHolder.imageView.setColorFilter(element.image)
-        viewHolder.checkBox.isChecked = element.isChecked
-        viewHolder.checkBox.setOnClickListener{
-            element.isChecked = !element.isChecked
-            viewHolder.checkBox.isChecked = element.isChecked
-            if (element.isChecked) {
-                if (filter == STATION_FILTER)
-                    checkedMetro.add(element.text)
-                else if (filter == CATEGORY_FILTER)
-                    checkedCategory.add(element.text)
-            }
-            else {
-                if (filter == STATION_FILTER)
-                    checkedMetro.remove(element.text)
-                else if (filter == CATEGORY_FILTER)
-                    checkedCategory.remove(element.text)
-            }
-        }
-
-
-
-        if (viewHolder.checkBox.isChecked) {
-            Log.d("CHECKSTATE_IS_TRUE", "POSITION IS $position")
-        }
-
     }
 
     inner class ViewHolder internal constructor(view: View) : RecyclerView.ViewHolder(view) {
 
-        val youTubePlayerView: YouTubePlayerView = findViewById(R.id.youtube_player_view)
-        getLifecycle().addObserver(youTubePlayerView)
-
-        internal val imageView: ImageView
-        internal val checkBox: CheckBox
-        init {
-            imageView = view.findViewById<View>(R.id.list_icon) as ImageView
-            checkBox = view.findViewById<View>(R.id.checkBox_search) as CheckBox
-        }
+        val youTubePlayerView: YouTubePlayerView = view.findViewById(R.id.youtube_player_view)
     }
 
-    fun setData(elements: ArrayList<SearchOption>) {
-        this.elements = elements
-        notifyDataSetChanged()
-    }
 }

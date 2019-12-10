@@ -24,7 +24,7 @@ class HobbyObject
     private var id: Int = 0
     private var name: String = "Name"
     private var category: String = "Category"
-    private var difficulty: Int = 0
+    private var difficulty: Int = 5
     private var description:String = "Description"
     private var images: ArrayList<String> = ArrayList()
     private var guide:String = "Guide"
@@ -90,8 +90,16 @@ class HobbyObject
         return this.guideVideo[position]
     }
 
+    override fun getVideoArray(): ArrayList<String> {
+        return this.guideVideo
+    }
+
     override fun getExercise(position: Int): String {
         return this.exercise[position]
+    }
+
+    override fun getExercises(): ArrayList<String> {
+        return this.exercise
     }
 
     override fun getExerciseImage(position: Int): String {
