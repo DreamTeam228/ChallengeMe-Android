@@ -51,7 +51,7 @@
                     android:id="@+id/aboutTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="64dp"
+                    android:layout_marginStart="64sp"
                     android:layout_marginTop="24dp"
                     android:text="@string/UserAboutTitle"
                     android:textAppearance="@style/CM_body_label"
@@ -171,6 +171,7 @@
                         android:id="@+id/lastChallengePic_iv"
                         android:layout_width="wrap_content"
                         android:layout_height="100sp"
+                        android:layout_gravity="center"
                         android:layout_marginTop="8sp"
                         android:layout_marginBottom="8sp"
                         app:srcCompat="@drawable/tmp_image" />

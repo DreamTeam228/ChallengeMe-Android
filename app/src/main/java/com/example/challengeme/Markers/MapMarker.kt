@@ -3,13 +3,16 @@ package com.example.challengeme.Markers
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.android.gms.maps.model.LatLng
+import java.net.InetAddress
 
-class MapMarker(val lat:Double,val lng:Double, val name:String, val category: String) : Parcelable{
+class MapMarker(val lat:Double,val lng:Double, val name:String, val category: String, val address: String ) : Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readDouble(),
         parcel.readDouble(),
         parcel.readString()!!,
+        parcel.readString()!!,
         parcel.readString()!!
+
     )
 
     // создает объект-метку для карты
@@ -22,6 +25,7 @@ class MapMarker(val lat:Double,val lng:Double, val name:String, val category: St
         parcel.writeDouble(lng)
         parcel.writeString(name)
         parcel.writeString(category)
+        parcel.writeString(address)
     }
 
     override fun describeContents(): Int {

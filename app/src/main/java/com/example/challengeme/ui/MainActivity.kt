@@ -1,5 +1,6 @@
 package com.example.challengeme.ui
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,6 +27,7 @@ import com.example.challengeme.data.globalData.userRepository
 import com.example.challengeme.ui.Adapters.VideoAdapter
 import com.example.challengeme.ui.login.LoginActivity
 import java.lang.StringBuilder
+import kotlin.system.exitProcess
 
 var markers : ArrayList<MapMarker> = ArrayList()
 
@@ -83,7 +85,6 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
     }
 
 
-
     // сопоставляем view с элементами Layout'a
     private fun findViewElements() {
         nameTextView = findViewById(R.id.hobby_name_tv)
@@ -103,6 +104,7 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
             // но я согласна, что в сплэшэ она еще не нужна
 
            // controller.onMapButtonClick(this)
+
         }
         companyButton.setOnClickListener {
 

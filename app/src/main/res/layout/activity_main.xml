@@ -103,7 +103,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="serif"
-                android:text="Текст гайда" />
+                android:text="Текст гайда"
+                android:textAppearance="@style/CM_text_style" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/video_recyclerView"

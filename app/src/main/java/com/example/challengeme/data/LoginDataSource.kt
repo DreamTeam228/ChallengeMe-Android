@@ -21,7 +21,7 @@ class LoginDataSource {
     }
 
     fun logout() {
-        // TODO: revoke authentication
+
     }
 
     private fun checkLogin (username: String, password: String) : LoggedInUser {

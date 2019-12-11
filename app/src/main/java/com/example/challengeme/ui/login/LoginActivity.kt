@@ -57,6 +57,8 @@ class LoginActivity : AppCompatActivity() {
             loading.visibility = View.GONE
             if (loginResult.error != null) {
                 showLoginFailed(loginResult.error)
+                username.text.clear()
+                password.text.clear()
             }
             if (loginResult.success != null) {
                 updateUiWithUser(loginResult.success)
@@ -69,12 +71,13 @@ class LoginActivity : AppCompatActivity() {
                 saveUser(username.text.toString(), password.text.toString())
 
                 startActivity(Intent(baseContext, ProfileActivity::class.java))
-            }
-            // подумать над закрытием этого активити - если будет возвращаться сюда - закрываем его
-            setResult(Activity.RESULT_OK)
+                // подумать над закрытием этого активити - если будет возвращаться сюда - закрываем его
+                setResult(Activity.RESULT_OK)
 
-            //Complete and destroy login activity once successful
-            finish()
+                //Complete and destroy login activity once successful
+                finish()
+            }
+
         })
 
         username.afterTextChanged {

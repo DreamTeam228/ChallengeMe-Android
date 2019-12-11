@@ -42,6 +42,9 @@
     <string name="title_dashboard">QR-код</string>
     <string name="title_notifications">Чат</string>
     <string name="profileTitle">Профиль</string>
+    <string name="logoutButton">Выход</string>
+    <string name="logoutTitle">Выйти из профиля?</string>
+    <string name="logoutText">Выйти из профиля?</string>
     <string name="userCache">userCache</string>
     <string name="userCacheLogin">userCacheLogin</string>
     <string name="userCachePassword">userCachePassword</string>
@@ -53,4 +56,6 @@
     <string name="userDisplayRangField">Ранг:</string>
     <string name="UserAboutTitle">О себе</string>
     <string name="viewMoreAchievements"><u>Показать все полученные достижения</u></string>
+    <string name="yes">Выйти из профиля?</string>
+    <string name="no">Выйти из профиля?</string>
 </resources>

@@ -20,7 +20,7 @@
     </style>
     <style name ="CM_body_label" parent="@style/CM_text_style">
         <item name="android:fontFamily">sans-serif-black</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:layout_marginLeft">10sp</item>
     </style>
     <style name="CM_header_label" parent="@style/CM_body_label">
@@ -29,7 +29,7 @@
         <item name="android:layout_marginLeft">0dp</item>
     </style>
     <style name="CM_header_label.text" parent="@style/CM_header_label">
-        <item name="android:textSize">24sp</item>
+
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
     <style name="CM_button" parent="@style/Widget.AppCompat.Button">
@@ -37,7 +37,7 @@
         <item name="android:textColor"> #FFFFFF </item>
         <item name="android:textAlignment">center</item>
         <item name="android:fontFamily">sans-serif-black</item>
-        <item name="android:textSize">16sp</item>
+
         <item name="android:layout_width">300dp</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:buttonCornerRadius" tools:targetApi="p">10dp</item>

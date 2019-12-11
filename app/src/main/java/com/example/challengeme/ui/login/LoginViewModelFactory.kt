@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.challengeme.data.LoginDataSource
 import com.example.challengeme.data.LoginRepository
+import com.example.challengeme.data.globalData.userRepository
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.
@@ -15,9 +16,9 @@ class LoginViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
             return LoginViewModel(
-                loginRepository = LoginRepository(
+                loginRepository = userRepository.instance/*LoginRepository(
                     dataSource = LoginDataSource()
-                )
+                )*/
             ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

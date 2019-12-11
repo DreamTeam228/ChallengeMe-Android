@@ -1,6 +1,7 @@
 package com.example.challengeme.ui
-
+import android.content.Context
 import android.os.Bundle
+import android.view.Menu
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -9,8 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.challengeme.R
 import com.example.challengeme.data.globalData.userRepository
-import com.example.challengeme.data.model.LoggedInUser
-import com.example.challengeme.ui.login.LoggedInUserView
+
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -33,6 +33,42 @@ class ProfileActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        //supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onCreateOptionsMenu (menu: Menu) : Boolean {
+        menuInflater.inflate(R.menu.profile_menu,menu)
+        val logout = menu.findItem(R.id.logout)
+        // А перед тем, как проверять зарегистрированность юзера, надо проверить, есть ли инфа о нём в кэше
+        logout.setOnMenuItemClickListener {
+            /*val builder = AlertDialog.Builder(baseContext)
+            builder.setTitle(R.string.logoutTitle)
+            builder.setMessage(R.string.logoutText)
+            builder.setPositiveButton(R.string.yes) { _, _ ->
+                userRepository.instance.logout()
+                logoutUser()
+            }
+            builder.setNegativeButton(R.string.no) { _, _ ->
+
+            }
+
+            val dialog : AlertDialog = builder.create()
+            dialog.show()*/
+
+            userRepository.instance.logout()
+            logoutUser()
+            finish()
+
+            true
+        }
+        return true
+    }
+
+
+    fun logoutUser() {
+        val pref = getSharedPreferences(getText(R.string.userCache).toString(), Context.MODE_PRIVATE)
+        val editor = pref.edit()
+        editor.clear()
+        editor.apply()
     }
 }

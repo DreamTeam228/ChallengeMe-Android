@@ -19,7 +19,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/item_ChallengeName_TextView"
+                android:id="@+id/itemChallengeName_TextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8sp"
@@ -37,7 +37,7 @@
                 app:srcCompat="@drawable/tmp_image" />
 
             <RatingBar
-                android:id="@+id/ratingBar"
+                android:id="@+id/itemChallenge_RatingBar"
                 style="@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

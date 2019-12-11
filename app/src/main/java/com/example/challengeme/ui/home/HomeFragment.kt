@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.challengeme.R
-import com.example.challengeme.User.UserAchievement
 import com.example.challengeme.data.globalData.userRepository
 import com.example.challengeme.data.model.LoggedInUser
 import com.example.challengeme.ui.login.LoggedInUserView
@@ -82,18 +81,20 @@ class HomeFragment : Fragment() {
         lastChallengeDifficulty_bar.progress = lc?.difficulty
             ?: 0
         var la = userInfo.lastAchievement
-        lastAchievemntTitle_tv = root.findViewById(R.id.lastAchievementTitle_tv)
+        lastAchievemntTitle_tv = root.findViewById(R.id.userAchievementTitle_tv)
         lastAchievemntTitle_tv.text = la?.name ?: "Нет достижений"
-        lastAchievemntText_tv = root.findViewById(R.id.lastAchievementText_tv)
+        lastAchievemntText_tv = root.findViewById(R.id.userAchievementText_tv)
         lastAchievemntText_tv.text = la?.description ?: "Нет достижений"
-        lastAchievementIcon_iv = root.findViewById(R.id.lastAchievement_iv)
+        lastAchievementIcon_iv = root.findViewById(R.id.userAchievement_iv)
         Picasso.get()
             .load(la?.image)
             .into(lastAchievementIcon_iv)
 
 
+
         return root
     }
+
 
 
 }
