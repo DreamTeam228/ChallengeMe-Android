@@ -25,14 +25,11 @@ class QRCodeFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_qr_code, container, false)
         val qrView = root.findViewById<ImageView>(R.id.qrCode_imageView)
         val qrButton = root.findViewById<Button>(R.id.qrCode_Button)
-        /*val textView: TextView = root.findViewById(R.id.text_dashboard)
-        qrCodeViewModel.text.observe(this, Observer {
-            textView.text = it
-        })*/
 
 
-        qrCodeViewModel.qrCodeString.observe(this, Observer {
-            val registrationState = it ?: return@Observer
+        qrCodeViewModel.qrCode.observe(this, Observer {
+            val qr = it ?: return@Observer
+            qrView.setImageBitmap(qr)
 
             // рисуем куАр код
 
@@ -46,6 +43,7 @@ class QRCodeFragment : Fragment() {
             /*loading.visibility = View.VISIBLE
 
             qrCodeViewModel.методГенерацииКуар*/
+            qrCodeViewModel.generateQR()
         }
 
         return root
