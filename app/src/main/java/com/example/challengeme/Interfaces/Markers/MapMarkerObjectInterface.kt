@@ -8,9 +8,9 @@ interface MapMarkerObjectInterface : Parcelable {
     fun getShopMarkers() : ArrayList <MapMarker>
     fun getRentMarkers() : ArrayList<MapMarker>
 
-    fun setEducationMarkers(m: List<MapMarker>)
-    fun setShopMarkers(m: List<MapMarker>)
-    fun setRentMarkers(m: List<MapMarker>)
+    fun setEducationMarkers(m: ArrayList<MapMarker>)
+    fun setShopMarkers(m: ArrayList<MapMarker>)
+    fun setRentMarkers(m: ArrayList<MapMarker>)
 
     fun addMarker(m:MapMarker)
     fun addEducationMarker(m: MapMarker)

@@ -16,16 +16,20 @@ class MapMarkerObject : MapMarkerObjectInterface,
     private var rentMarkers: ArrayList<MapMarker> = ArrayList()
     private var observers : ArrayList<MapObserverInterface> = ArrayList()
 
-    override fun setEducationMarkers(m: List<MapMarker>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    fun isDataRecieved() : Boolean {
+        return (educationMarkers.isNotEmpty() && shopMarkers.isNotEmpty() && rentMarkers.isNotEmpty())
     }
 
-    override fun setShopMarkers(m: List<MapMarker>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun setEducationMarkers(m: ArrayList<MapMarker>) {
+       this.educationMarkers = m
     }
 
-    override fun setRentMarkers(m: List<MapMarker>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun setShopMarkers(m: ArrayList<MapMarker>) {
+        this.shopMarkers = m
+            }
+
+    override fun setRentMarkers(m: ArrayList<MapMarker>) {
+        this.rentMarkers = m
     }
 
     override fun addMarker(m: MapMarker) {

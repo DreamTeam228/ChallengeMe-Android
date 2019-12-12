@@ -2,6 +2,8 @@ package com.example.challengeme.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -10,6 +12,7 @@ import com.example.challengeme.Interfaces.Markers.MapControllerInterface
 import com.example.challengeme.Interfaces.Markers.MapMarkerObjectInterface
 import com.example.challengeme.Markers.MapMarker
 import com.example.challengeme.R
+import com.example.challengeme.ui.qr.QRCodeViewModel
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -23,8 +26,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var model : MapMarkerObjectInterface
-    private lateinit var controller : MapControllerInterface
-    private lateinit var markers: ArrayList<MapMarker>
+    //private lateinit var markers: ArrayList<MapMarker>
+    private lateinit var mapViewModel: MapViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,20 +40,46 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.menu_item_rent,
                 R.id.menu_item_edu,
+                R.id.menu_item_rent,
                 R.id.menu_item_shop
             )
         )
+        navView.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.menu_item_rent -> {
+                    mapViewModel.setRent()
+                    true
+                }
+                R.id.menu_item_edu -> {
+                    mapViewModel.setEducation()
+                    true
+                }
+                R.id.menu_item_shop -> {
+                    mapViewModel.setShop()
+                    true
+                }
+                else -> {
+                    mapViewModel.setRent()
+                    true
+                }
+            }
+
+
+        }
         //setupActionBarWithNavController(navController, appBarConfiguration)
         //navView.setupWithNavController(navController)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
+            .findFragmentById(R.id.map2) as SupportMapFragment
         mapFragment.getMapAsync(this)
-        this.model = intent.getParcelableExtra(R.string.mapIntent.toString())!!   // следует ли это делать через контроллер?
-        this.markers = model.getEducationMarkers()                        // Предлагаю по дефолту при запуске показывать места обучения
+        //this.model = intent.getParcelableExtra(R.string.mapIntent.toString())!!   // следует ли это делать через контроллер?
+        //this.markers = model.getEducationMarkers()                        // Предлагаю по дефолту при запуске показывать места обучения
+
+        mapViewModel =
+            ViewModelProviders.of(this).get(MapViewModel::class.java)
+
     }
 
     /**
@@ -66,17 +95,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
         val startPoint = LatLng(55.7,37.6)                                // здесь будет местополжение пользователя
         mMap.moveCamera(CameraUpdateFactory.newLatLng(startPoint))
+        mapViewModel.currentMarkers.observe(this, Observer {
+            val markers = it?: return@Observer
+            changeMarkers(markers)
+        })
         // Устанавливаем маркеры
-        setMarkersOnMap()
+
         // Add a marker in Sydney and move the camera
         //val sydney = LatLng(-34.0, 151.0)
         //mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
 
     }
 
-    private fun setMarkersOnMap () {
+    fun changeMarkers(markers: ArrayList<MapMarker>) {
+
+        mMap.clear()
         if (markers.isNotEmpty()) {
-            for (i in 0..markers.size) {
+            for (i in 0 until markers.size) {
                 val marker = markers[i]
                 mMap.addMarker(
                     MarkerOptions()
@@ -86,12 +121,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
 
         }
-    }
-
-    fun changeMarkers(newMarkers: ArrayList<MapMarker>) {
-        mMap.clear()
-        this.markers = newMarkers
-        setMarkersOnMap()
     }
 
     override fun onStop() {

@@ -15,19 +15,31 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
+import com.example.challengeme.AsynchronousRequests.MapMarkerAsyncTask
 import com.example.challengeme.Hobby.HobbyController
 import com.example.challengeme.Hobby.ImageFragment
 import com.example.challengeme.Interfaces.Hobby.HobbyControllerInterface
 import com.example.challengeme.Interfaces.Hobby.HobbyObjectInterface
 import com.example.challengeme.Interfaces.Hobby.HobbyObserverInterface
 import com.example.challengeme.Markers.MapMarker
-import com.example.challengeme.R
 import com.example.challengeme.data.globalData.hobbyModel
+import com.example.challengeme.data.globalData.mapMarkerModel
 import com.example.challengeme.data.globalData.userRepository
 import com.example.challengeme.ui.Adapters.VideoAdapter
 import com.example.challengeme.ui.login.LoginActivity
 import java.lang.StringBuilder
+import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.system.exitProcess
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.R
+import android.provider.Settings.System.DATE_FORMAT
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+
 
 var markers : ArrayList<MapMarker> = ArrayList()
 
@@ -37,6 +49,8 @@ var markers : ArrayList<MapMarker> = ArrayList()
 
 
 class MainActivity : AppCompatActivity(), HobbyObserverInterface {
+
+    private val formatter = SimpleDateFormat("dd-MM-yyyy")
 
     private lateinit var model: HobbyObjectInterface
     private lateinit var controller: HobbyControllerInterface
@@ -62,7 +76,7 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(com.example.challengeme.R.layout.activity_main)
 
         model = hobbyModel.instance
         //this.model = intent.getParcelableExtra(R.string.modelIntent.toString())!!
@@ -72,8 +86,8 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
 
     }
     override fun onCreateOptionsMenu (menu: Menu) : Boolean {
-        menuInflater.inflate(R.menu.to_profile,menu)
-        val goProfile = menu.findItem(R.id.profile)
+        menuInflater.inflate(com.example.challengeme.R.menu.to_profile,menu)
+        val goProfile = menu.findItem(com.example.challengeme.R.id.profile)
         // А перед тем, как проверять зарегистрированность юзера, надо проверить, есть ли инфа о нём в кэше
          goProfile.setOnMenuItemClickListener {
              if (userRepository.instance.isLoggedIn)
@@ -87,16 +101,17 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
 
     // сопоставляем view с элементами Layout'a
     private fun findViewElements() {
-        nameTextView = findViewById(R.id.hobby_name_tv)
-        categoryTextView = findViewById(R.id.category_tv)
-        difficultBar = findViewById(R.id.difficulty_rb)
-        descriptionTextView = findViewById(R.id.description_tv)
-        image_pager = findViewById(R.id.image_vp)
-        guideTextView = findViewById(R.id.guide_tv)
-        exerciseTextView = findViewById(R.id.exercise_tv)
-        mapButton = findViewById(R.id.open_map_button)
-        companyButton = findViewById(R.id.find_people_button)
-        recycler = findViewById<RecyclerView>(R.id.video_recyclerView)
+        nameTextView = findViewById(com.example.challengeme.R.id.hobby_name_tv)
+        dateTextView = findViewById(com.example.challengeme.R.id.date_tv)
+        categoryTextView = findViewById(com.example.challengeme.R.id.category_tv)
+        difficultBar = findViewById(com.example.challengeme.R.id.difficulty_rb)
+        descriptionTextView = findViewById(com.example.challengeme.R.id.description_tv)
+        image_pager = findViewById(com.example.challengeme.R.id.image_vp)
+        guideTextView = findViewById(com.example.challengeme.R.id.guide_tv)
+        exerciseTextView = findViewById(com.example.challengeme.R.id.exercise_tv)
+        mapButton = findViewById(com.example.challengeme.R.id.open_map_button)
+        companyButton = findViewById(com.example.challengeme.R.id.find_people_button)
+        recycler = findViewById<RecyclerView>(com.example.challengeme.R.id.video_recyclerView)
 
         mapButton.setOnClickListener{
             // думаю надо сделать загрузку мапМаркеров именно тут а не в сплэше
@@ -104,12 +119,22 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
             // но я согласна, что в сплэшэ она еще не нужна
 
            // controller.onMapButtonClick(this)
+            if(mapMarkerModel.instance.isDataRecieved())
+                startActivity(Intent(this,MapsActivity::class.java))
+               // controller.onMapButtonClick(this) мб просто старт активити и избавимся от всехх контроллеров?
+                else  {
+                MapMarkerAsyncTask().execute(getText(com.example.challengeme.R.string.mapMarkersURL).toString())
+                startActivity(Intent(this,MapsActivity::class.java))
+            }
 
         }
         companyButton.setOnClickListener {
 
             // проверяю логин 
-            startActivity(Intent(this, LoginActivity::class.java))
+            //startActivity(Intent(this, LoginActivity::class.java))
+            if (userRepository.instance.isLoggedIn)
+                startActivity(Intent(this, ProfileActivity::class.java))
+            else startActivity (Intent(this, LoginActivity::class.java))
 
         }
     }
@@ -119,6 +144,7 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
         categoryTextView.text = model.getCategory()
         difficultBar.rating = model.getDifficulty().toFloat()
         descriptionTextView.text = model.getDescription()
+        dateTextView.text = formatter.format(Date())
         image_pager.adapter = PagerAdapter(fragmentManager)
         guideTextView.text = model.getGuide()
 

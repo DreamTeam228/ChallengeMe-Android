@@ -48,7 +48,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
         val retrAsyncTask =
             HobbyAsyncTask(this)
-        retrAsyncTask.execute("http://188.225.46.84")
+        retrAsyncTask.execute(getText(R.string.standartUrl).toString())
 
 
     }

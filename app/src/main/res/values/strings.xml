@@ -2,12 +2,6 @@
     <string name="app_name">ChallengeMe</string>
     <string name="title_activity_maps">Map</string>
     <string name="MAP_API_KEY">AIzaSyBqb5bCeJ_SU9en13PozYpk5SXNthPskqg</string>
-    <string name="tmp_name">Катание на роликах</string>
-    <string name="tmp_category">Спорт</string>
-    <string name="tmp_description">Это тапочки с колесами</string>
-    <string name="tmp_guide">Встань и оттолкнись</string>
-    <string name="tmp_ex1">1. Попробуйте сделать змейку</string>
-    <string name="tmp_ex2">2. Попробуйте резко повернуть</string>
     <string name="descriptionTitle">Описание</string>
     <string name="guideTitle">Гайд</string>
     <string name="whereTitle">Где можно этим заняться?</string>
@@ -21,6 +15,17 @@
     <string name="dateTitle">Дата</string>
     <string name="mapIntent">MapModel</string>
     <string name="modelIntent">HobbyModel</string>
+
+
+    <string name="standartUrl">http://188.225.46.84</string>
+    <string name="getHobbyURL"></string>
+    <string name="loginUserURL">http://188.225.46.84/json123</string>
+    <string name="registrationURL"></string>
+    <string name="mapMarkersURL"></string>
+    <string name="userChallengesURL"></string>
+    <string name="userAchievementsURL"></string>
+
+
     <string name="title_activity_login">Войти</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Пароль</string>
@@ -28,6 +33,8 @@
     <string name="action_sign_in">Войти</string>
     <string name="action_sign_up">Зарегистрироваться</string>
     <string name="action_sign_in_short">Войти</string>
+
+
     <string name="welcome">Добро пожаловать,</string>
     <string name="sign_up_success">Регистрация прошла успешно! Можете авторизоваться :)</string>
     <string name="registration_failed">Регистрация не удалась :(</string>
@@ -37,6 +44,8 @@
     <string name="empty_field">Пустое поле!</string>
     <string name="login_failed">Не удалось авторизоваться</string>
     <string name="toRegistration"><u>Все еще нет аккаунта? Скорее зарегистрируйтесь!</u></string>
+
+
     <string name="title_activity_profile">Профиль</string>
     <string name="title_home">Профиль</string>
     <string name="title_dashboard">QR-код</string>
@@ -45,9 +54,13 @@
     <string name="logoutButton">Выход</string>
     <string name="logoutTitle">Выйти из профиля?</string>
     <string name="logoutText">Выйти из профиля?</string>
+
+
     <string name="userCache">userCache</string>
     <string name="userCacheLogin">userCacheLogin</string>
     <string name="userCachePassword">userCachePassword</string>
+
+
     <string name="showAllUserChallenges"><u>Показать все выполненные Челленджи</u></string>
     <string name="UserAchievementsTitle">Мои Достижения</string>
     <string name="userChallengesTitle">Мои Челленджи</string>
@@ -56,6 +69,8 @@
     <string name="userDisplayRangField">Ранг:</string>
     <string name="UserAboutTitle">О себе</string>
     <string name="viewMoreAchievements"><u>Показать все полученные достижения</u></string>
-    <string name="yes">Выйти из профиля?</string>
-    <string name="no">Выйти из профиля?</string>
+
+
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
 </resources>
