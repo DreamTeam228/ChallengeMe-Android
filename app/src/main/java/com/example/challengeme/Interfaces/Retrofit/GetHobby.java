@@ -5,7 +5,7 @@ import com.example.challengeme.Hobby.HobbyObject;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
-public interface HobbyApi {
+public interface GetHobby {
 
     @GET ("json")
     Call<HobbyObject> hobbyObj();

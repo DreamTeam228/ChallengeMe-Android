@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.AsyncTask
 import androidx.core.content.ContextCompat
 import com.example.challengeme.Hobby.HobbyObject
-import com.example.challengeme.Interfaces.Retrofit.HobbyApi
+import com.example.challengeme.Interfaces.Retrofit.GetHobby
 import com.example.challengeme.data.globalData.hobbyModel
 import com.example.challengeme.ui.MainActivity
 import retrofit2.Call
@@ -23,11 +23,12 @@ class HobbyAsyncTask (var context: Context) : AsyncTask<String, Void, HobbyObjec
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val hobbyApi: HobbyApi = retrofit.create(HobbyApi::class.java)
+        val hobbyApi: GetHobby = retrofit.create(
+            GetHobby::class.java)
         try {
             val hobbyObj: Call<HobbyObject> = hobbyApi.hobbyObj()
             val response: Response<HobbyObject> = hobbyObj.execute()
-            var hobbyObject: HobbyObject? = response.body()
+            val hobbyObject: HobbyObject? = response.body()
             return hobbyObject!!
 
         } catch (e: Exception) {

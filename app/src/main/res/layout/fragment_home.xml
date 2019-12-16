@@ -194,7 +194,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/showAllUserChallenges"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:onClick="onViewMoreClick"/>
 
             <TextView
                 android:id="@+id/userAchievements_Title"
@@ -215,7 +216,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/viewMoreAchievements"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:onClick="onViewMoreClick"/>
 
         </LinearLayout>
     </ScrollView>

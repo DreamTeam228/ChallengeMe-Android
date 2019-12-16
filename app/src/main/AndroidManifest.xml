@@ -20,11 +20,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".UserListActivity">
+        <activity android:name=".ui.UserListActivity">
 
         </activity>
         <activity
-            android:name=".ui.ProfileActivity"
+            android:name=".ui.profile.ProfileActivity"
             android:label="@string/title_activity_profile"
             android:parentActivityName=".ui.MainActivity">
             <meta-data

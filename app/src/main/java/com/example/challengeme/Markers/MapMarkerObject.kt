@@ -3,18 +3,14 @@ package com.example.challengeme.Markers
 import android.os.Parcel
 import android.os.Parcelable
 import com.example.challengeme.Interfaces.Markers.MapMarkerObjectInterface
-import com.example.challengeme.Interfaces.Markers.MapObservableInterface
-import com.example.challengeme.Interfaces.Markers.MapObserverInterface
 
-class MapMarkerObject : MapMarkerObjectInterface,
-    MapObservableInterface {
+class MapMarkerObject : MapMarkerObjectInterface {
 
     // Аналогично рпедлагаю рассмотреть синглтоны
 
     private var educationMarkers: ArrayList<MapMarker> = ArrayList()
     private var shopMarkers: ArrayList<MapMarker> = ArrayList()
     private var rentMarkers: ArrayList<MapMarker> = ArrayList()
-    private var observers : ArrayList<MapObserverInterface> = ArrayList()
 
     fun isDataRecieved() : Boolean {
         return (educationMarkers.isNotEmpty() && shopMarkers.isNotEmpty() && rentMarkers.isNotEmpty())
@@ -70,20 +66,6 @@ class MapMarkerObject : MapMarkerObjectInterface,
 
     override fun getRentMarkers(): ArrayList<MapMarker> {
         return this.rentMarkers
-    }
-
-    override fun notifyObservers() {
-        observers.forEachIndexed { _, element ->
-            element.update()
-        }
-    }
-
-    override fun registerObserver(o: MapObserverInterface) {
-        observers.add(o)
-    }
-
-    override fun deleteObserver(o: MapObserverInterface) {
-        observers.remove(o)
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

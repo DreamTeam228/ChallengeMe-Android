@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.challengeme.R
 import com.example.challengeme.data.globalData.userRepository
@@ -42,6 +43,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Здесь нужно получать ВМ из профайлАктивити
         homeViewModel =
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
@@ -51,6 +53,10 @@ class HomeFragment : Fragment() {
         })*/
         userInfo = LoggedInUserView(user!!.displayName, user.position,
             user.userLevel, user.challengeCount,
+            // НЕ ЗАБЫТЬ !!!
+            // СНЯТЬ КОММЕНТ !!!
+            // КАК ТОЛЬКО !!!
+            // ДАДУТ ИНЕТ В СЕЛЕ !!!
             user.lastChallenge, user.lastAchievement,
             user.profilePicture)
 
@@ -91,10 +97,36 @@ class HomeFragment : Fragment() {
             .into(lastAchievementIcon_iv)
 
 
+        homeViewModel.editState.observe(this@HomeFragment, Observer {
+            val editState = it ?: return@Observer
+
+            if(editState.isEnable == true) {
+                userDisplayName_tv.isFocusable = false
+                userDisplayName_tv.isEnabled = false
+                userDisplayName_tv.isClickable = false
+                userDisplayName_tv.isFocusableInTouchMode = false
+
+                userPosition_tv.isFocusable = false
+                userPosition_tv.isEnabled = false
+                userPosition_tv.isClickable = false
+                userPosition_tv.isFocusableInTouchMode = false
+            } else {
+                userDisplayName_tv.isFocusable = true
+                userDisplayName_tv.isEnabled = true
+                userDisplayName_tv.isClickable = true
+                userDisplayName_tv.isFocusableInTouchMode = true
+
+                userPosition_tv.isFocusable = true
+                userPosition_tv.isEnabled = true
+                userPosition_tv.isClickable = true
+                userPosition_tv.isFocusableInTouchMode = true
+            }
+
+        })
+
 
         return root
     }
-
 
 
 }

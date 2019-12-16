@@ -5,13 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.challengeme.R
 import com.example.challengeme.User.UserAchievement
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import com.squareup.picasso.Picasso
 
 
@@ -20,7 +17,7 @@ class AchievementAdapter internal constructor(val context: Context, private var 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
-        val view = inflater.inflate(R.layout.item_video, viewGroup, false)
+        val view = inflater.inflate(R.layout.item_achievements, viewGroup, false)
         return ViewHolder(view)
     }
 
@@ -41,8 +38,8 @@ class AchievementAdapter internal constructor(val context: Context, private var 
 
     inner class ViewHolder internal constructor(view: View) : RecyclerView.ViewHolder(view) {
 
-        val userAchievementTitle_tv = view.findViewById<TextView>(R.id.userAchievementTitle_tv)
-        val userAchievementText_tv = view.findViewById<TextView>(R.id.userAchievementText_tv)
-        val userAchievementImaage_iv = view.findViewById<ImageView>(R.id.userAchievement_iv)
+        val userAchievementTitle_tv: TextView = view.findViewById(R.id.userAchievementTitle_tv)
+        val userAchievementText_tv: TextView = view.findViewById(R.id.userAchievementText_tv)
+        val userAchievementImaage_iv: ImageView = view.findViewById(R.id.userAchievement_iv)
     }
 }

@@ -1,12 +1,10 @@
 package com.example.challengeme.ui
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -16,28 +14,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.example.challengeme.AsynchronousRequests.MapMarkerAsyncTask
-import com.example.challengeme.Hobby.HobbyController
 import com.example.challengeme.Hobby.ImageFragment
-import com.example.challengeme.Interfaces.Hobby.HobbyControllerInterface
 import com.example.challengeme.Interfaces.Hobby.HobbyObjectInterface
-import com.example.challengeme.Interfaces.Hobby.HobbyObserverInterface
 import com.example.challengeme.Markers.MapMarker
 import com.example.challengeme.data.globalData.hobbyModel
 import com.example.challengeme.data.globalData.mapMarkerModel
 import com.example.challengeme.data.globalData.userRepository
 import com.example.challengeme.ui.Adapters.VideoAdapter
 import com.example.challengeme.ui.login.LoginActivity
+import com.example.challengeme.ui.profile.ProfileActivity
 import java.lang.StringBuilder
-import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.system.exitProcess
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import android.R
-import android.provider.Settings.System.DATE_FORMAT
-import java.text.DateFormat
 import java.text.SimpleDateFormat
 
 
@@ -48,12 +36,11 @@ var markers : ArrayList<MapMarker> = ArrayList()
 // Или чтобы брать данные о юзере из кэша в сплэшСкрине
 
 
-class MainActivity : AppCompatActivity(), HobbyObserverInterface {
+class MainActivity : AppCompatActivity() {
 
     private val formatter = SimpleDateFormat("dd-MM-yyyy")
 
     private lateinit var model: HobbyObjectInterface
-    private lateinit var controller: HobbyControllerInterface
     private var fragmentManager: FragmentManager = supportFragmentManager
 
     private lateinit var dateTextView: TextView
@@ -80,11 +67,10 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
 
         model = hobbyModel.instance
         //this.model = intent.getParcelableExtra(R.string.modelIntent.toString())!!
-        controller = HobbyController(model)
         findViewElements()
         setViewElements()
-
     }
+
     override fun onCreateOptionsMenu (menu: Menu) : Boolean {
         menuInflater.inflate(com.example.challengeme.R.menu.to_profile,menu)
         val goProfile = menu.findItem(com.example.challengeme.R.id.profile)
@@ -162,11 +148,6 @@ class MainActivity : AppCompatActivity(), HobbyObserverInterface {
             recycler.adapter = viewAdapter
             recycler.layoutManager = viewManager
         }
-
-    }
-
-    override fun update() {
-        setViewElements()
 
     }
 

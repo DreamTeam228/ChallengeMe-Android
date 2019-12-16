@@ -19,7 +19,7 @@ class ChallengeAdapter internal constructor(val context: Context, private var el
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
-        val view = inflater.inflate(R.layout.item_video, viewGroup, false)
+        val view = inflater.inflate(R.layout.item_challenge, viewGroup, false)
         return ViewHolder(view)
     }
 

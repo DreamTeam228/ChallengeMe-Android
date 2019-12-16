@@ -17,7 +17,7 @@
     <string name="modelIntent">HobbyModel</string>
 
 
-    <string name="standartUrl">http://188.225.46.84</string>
+    <string name="standardUrl">http://188.225.46.84</string>
     <string name="getHobbyURL"></string>
     <string name="loginUserURL">http://188.225.46.84/json123</string>
     <string name="registrationURL"></string>
@@ -51,6 +51,8 @@
     <string name="title_dashboard">QR-код</string>
     <string name="title_notifications">Чат</string>
     <string name="profileTitle">Профиль</string>
+    <string name="applyButton">Применить</string>
+    <string name="editButton">Редактировать</string>
     <string name="logoutButton">Выход</string>
     <string name="logoutTitle">Выйти из профиля?</string>
     <string name="logoutText">Выйти из профиля?</string>
@@ -59,6 +61,7 @@
     <string name="userCache">userCache</string>
     <string name="userCacheLogin">userCacheLogin</string>
     <string name="userCachePassword">userCachePassword</string>
+    <string name="userList">userList</string>
 
 
     <string name="showAllUserChallenges"><u>Показать все выполненные Челленджи</u></string>

@@ -1,60 +1,1 @@
-package com.example.challengeme.ui.qr
-
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import com.example.challengeme.R
-
-class QRCodeFragment : Fragment() {
-
-    private lateinit var qrCodeViewModel: QRCodeViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        qrCodeViewModel =
-            ViewModelProviders.of(this).get(QRCodeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_qr_code, container, false)
-        val qrView = root.findViewById<ImageView>(R.id.qrCode_imageView)
-        val qrButton = root.findViewById<Button>(R.id.qrCode_Button)
-
-
-        qrCodeViewModel.qrCode.observe(this, Observer {
-            val qr = it ?: return@Observer
-            qrView.setImageBitmap(qr)
-
-            // СЂРёСЃСѓРµРј РєСѓРђСЂ РєРѕРґ
-
-        })
-
-
-
-        qrButton.setOnClickListener {
-            // РўСѓС‚ Р·Р°РїСѓСЃРєР°РµРј РіРµРЅРµСЂР°С†РёСЋ РєСѓРђСЂРљРѕРґР°
-
-            /*loading.visibility = View.VISIBLE
-
-            qrCodeViewModel.РјРµС‚РѕРґР“РµРЅРµСЂР°С†РёРёРљСѓР°СЂ*/
-            qrCodeViewModel.generateQR()
-        }
-
-        return root
-
-    }
-
-
-
-
-    // РџРѕ РЅР°Р¶Р°С‚РёСЋ РЅР° РєРЅРѕРїРєСѓ - РёР·РјРµРЅСЏРµРј РїРѕР»Рµ РІРѕ Р’СЊСЋРњРѕРґРµР»
-    // Р’ Р°РєС‚РёРІРёС‚Рё РїРѕРґРїРёСЃС‹РІР°РµРјСЃСЏ РЅР° РёР·РјРµРЅРµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ СЌС‚РѕРіРѕ РїРѕР»СЏ
-    // РџСЂРё РёР·РјРµРЅРµРЅРёРё СЌС‚РѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ СЂРёСЃСѓРµРј РєР°СЂС‚РёРЅРєСѓ РєСѓРђСЂ
-
-}
+package com.example.challengeme.ui.qrimport android.os.Bundleimport android.view.LayoutInflaterimport android.view.Viewimport android.view.ViewGroupimport android.widget.Buttonimport android.widget.ImageViewimport androidx.fragment.app.Fragmentimport androidx.lifecycle.Observerimport androidx.lifecycle.ViewModelProvidersimport com.example.challengeme.Rclass QRCodeFragment : Fragment() {    private lateinit var qrCodeViewModel: QRCodeViewModel    override fun onCreateView(        inflater: LayoutInflater,        container: ViewGroup?,        savedInstanceState: Bundle?    ): View? {        qrCodeViewModel =            ViewModelProviders.of(this).get(QRCodeViewModel::class.java)        val root = inflater.inflate(R.layout.fragment_qr_code, container, false)        val qrView = root.findViewById<ImageView>(R.id.qrCode_imageView)        val qrButton = root.findViewById<Button>(R.id.qrCode_Button)        qrCodeViewModel.qrCode.observe(this, Observer {            val qr = it ?: return@Observer            qrView.setImageBitmap(qr)            // рисуем куАр код        })        qrButton.setOnClickListener {            // Тут запускаем генерацию куАрКода            /*loading.visibility = View.VISIBLE            qrCodeViewModel.методГенерацииКуар*/            qrCodeViewModel.generateQR()        }        return root    }    // По нажатию на кнопку - изменяем поле во ВьюМодел    // В активити подписываемся на изменение значения этого поля    // При изменении этого значения рисуем картинку куАр}

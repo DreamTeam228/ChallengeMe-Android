@@ -4,15 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.example.challengeme.Interfaces.Markers.MapControllerInterface
 import com.example.challengeme.Interfaces.Markers.MapMarkerObjectInterface
 import com.example.challengeme.Markers.MapMarker
 import com.example.challengeme.R
-import com.example.challengeme.ui.qr.QRCodeViewModel
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -26,7 +21,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var model : MapMarkerObjectInterface
-    //private lateinit var markers: ArrayList<MapMarker>
     private lateinit var mapViewModel: MapViewModel
 
 
@@ -64,7 +58,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     true
                 }
             }
-
 
         }
         //setupActionBarWithNavController(navController, appBarConfiguration)

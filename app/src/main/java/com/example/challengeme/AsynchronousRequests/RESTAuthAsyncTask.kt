@@ -26,10 +26,9 @@ class RESTAuthAsyncTask(val username : String, val password : String) : AsyncTas
             val response: ResponseEntity<LoggedInUser> =
                 restTemplate.exchange(url, HttpMethod.GET, entity, LoggedInUser::class.java)
 
-            response.statusCode
+            /*response.statusCode
             response.headers
-            response.body
-
+            response.body*/
 
             return response.body
         } catch (e: Exception) {

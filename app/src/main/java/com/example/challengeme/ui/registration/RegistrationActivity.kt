@@ -85,7 +85,7 @@ class RegistrationActivity : AppCompatActivity() {
                 password.text.toString(),
                 displayName.text.toString()
             )
-            // checking post here
+            // checking post here (inside of course)
         }
 
         password.apply {

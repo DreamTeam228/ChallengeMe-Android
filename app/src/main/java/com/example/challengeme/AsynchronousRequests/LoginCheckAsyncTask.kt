@@ -1,7 +1,7 @@
 package com.example.challengeme.AsynchronousRequests
 
 import android.os.AsyncTask
-import com.example.challengeme.Interfaces.Retrofit.LoginCheck
+import com.example.challengeme.Interfaces.Retrofit.PostLoginCheck
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -17,7 +17,7 @@ class LoginCheckAsyncTask (val username : String) : AsyncTask<String, Void, Int?
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val loginCheck: LoginCheck = retrofit.create(LoginCheck::class.java)
+        val loginCheck: PostLoginCheck = retrofit.create(PostLoginCheck::class.java)
        try {
            val loginObj: Call<Int?> = loginCheck.isLoginFree(username)
            val response: Response<Int?> = loginObj.execute()

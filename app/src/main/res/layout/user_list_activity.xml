@@ -4,11 +4,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserListActivity" >
+    tools:context=".ui.UserListActivity" >
 
-    <fragment
-        android:id="@+id/fragment"
-        android:name="com.example.challengeme.ui.userchallenge.UserChallengeFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+
 </FrameLayout>

@@ -7,8 +7,6 @@
         android:iconTint="#FFFFFF"
         android:title="@string/profileTitle"
         app:showAsAction="always">
-
-
     </item>
 
 </menu>

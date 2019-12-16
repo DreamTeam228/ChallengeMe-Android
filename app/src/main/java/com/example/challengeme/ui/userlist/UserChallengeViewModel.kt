@@ -1,4 +1,4 @@
-package com.example.challengeme.ui.userchallenge
+package com.example.challengeme.ui.userlist
 
 import androidx.lifecycle.ViewModel
 

@@ -37,7 +37,10 @@ class RegistrationViewModel : ViewModel() {
         } else {
             _registrationForm.value = RegistrationFormState(isDataValid = true)   //если все ок - меняем флаг, который разблокирует кнопку
         }
+        // else if(!isUserNameUnique) { и погнали ошибку }
     }
+
+    // fun isUserNameUnique(...) и вот тут вызываем пост запрос
 
     private fun isDisplayNameValid(displayName: String): Boolean {
         return displayName.length > 4

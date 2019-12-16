@@ -6,8 +6,17 @@ import androidx.lifecycle.ViewModel
 
 class HomeViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    private val _editState = MutableLiveData<HomeEditState>()
+    val editState: LiveData<HomeEditState> = _editState
+
+    fun enableEditState() {
+        _editState.value =
+            HomeEditState(isEnable = true)
     }
-    val text: LiveData<String> = _text
+
+    fun disableEditState() {
+        _editState.value =
+            HomeEditState(isEnable = false)
+    }
+
 }

@@ -48,7 +48,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
         val retrAsyncTask =
             HobbyAsyncTask(this)
-        retrAsyncTask.execute(getText(R.string.standartUrl).toString())
+        retrAsyncTask.execute(getText(R.string.standardUrl).toString())
 
 
     }
@@ -61,6 +61,12 @@ class SplashScreenActivity : AppCompatActivity() {
         if(login != null && password != null) {
             userRepository.instance.login(login, password)
         }
+        // УБРАТЬ НЕ ЗАБЫТЬ !!!!!!!!!
+        else {
+            userRepository.instance.setLoggedInUserNoInternet()
+        }
+        // ДО СЮДА!!!
+
         // Если логин и пароль != 0, отправляем пост-запрос на сервер
         // Если возвращается значение - собираем юзера в репозитории (userRepository.login(login, password))
         // Если нулл - ничего не делаем

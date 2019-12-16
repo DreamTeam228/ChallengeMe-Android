@@ -3,12 +3,9 @@ package com.example.challengeme.Hobby
 import android.os.Parcel
 import android.os.Parcelable
 import com.example.challengeme.Interfaces.Hobby.HobbyObjectInterface
-import com.example.challengeme.Interfaces.Hobby.HobbyObservableInterface
-import com.example.challengeme.Interfaces.Hobby.HobbyObserverInterface
 
 class HobbyObject
-    : HobbyObjectInterface,
-    HobbyObservableInterface {
+    : HobbyObjectInterface {
 
     /*
     Существует проблема передачи объекта через интент -
@@ -20,7 +17,6 @@ class HobbyObject
     либо объявить ее internal и обращаться, но это как-то bad practice
      */
 
-    private var observers: MutableList<HobbyObserverInterface> = ArrayList()
     private var id: Int = 0
     private var name: String = "Name"
     private var category: String = "Category"
@@ -127,21 +123,6 @@ class HobbyObject
         return this.guide
     }
 
-    override fun notifyObservers() {
-
-        observers.forEachIndexed { _, element ->
-            element.update()
-        }
-    }
-
-    override fun registerObserver(o: HobbyObserverInterface) {
-       observers.add(o)
-    }
-
-    override fun deleteObserver(o: HobbyObserverInterface) {
-        observers.remove(o)
-    }
-
     override fun getData() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -173,7 +154,6 @@ class HobbyObject
         setGuideVideo(guideVideo)
         setExercise(exercise)
         setExerciseImage(exerciseImage)
-        notifyObservers()
 
     }
 
