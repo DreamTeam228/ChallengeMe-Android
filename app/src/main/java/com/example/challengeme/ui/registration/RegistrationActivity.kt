@@ -23,6 +23,7 @@ class RegistrationActivity : AppCompatActivity() {
         val displayName = findViewById<EditText>(R.id.nameReg)
         val username = findViewById<EditText>(R.id.usernameReg)
         val password = findViewById<EditText>(R.id.passwordReg)
+        val confirm_p = findViewById<EditText>(R.id.confirmPasswordReg)
         val signup = findViewById<Button>(R.id.registrationButton)
         val loading = findViewById<ProgressBar>(R.id.loading)
 
@@ -49,6 +50,10 @@ class RegistrationActivity : AppCompatActivity() {
             if (registrationState.passwordError != null) {
                 password.error = getString(registrationState.passwordError)
             }
+            if (registrationState.confirmError != null) {
+                confirm_p.error = getString(registrationState.confirmError)
+            }
+
         })
 
         registrationViewModel.registrationResult.observe(this@RegistrationActivity, Observer {
@@ -73,27 +78,40 @@ class RegistrationActivity : AppCompatActivity() {
 
         displayName.afterTextChanged {
             registrationViewModel.registrationDataChanged(
+                displayName.text.toString(),
                 username.text.toString(),
                 password.text.toString(),
-                displayName.text.toString()
+                confirm_p.text.toString()
             )
         }
 
         username.afterTextChanged {
             registrationViewModel.registrationDataChanged(
+                displayName.text.toString(),
                 username.text.toString(),
                 password.text.toString(),
-                displayName.text.toString()
+                confirm_p.text.toString()
+
             )
             // checking post here (inside of course)
         }
 
-        password.apply {
+        password.afterTextChanged {
+            registrationViewModel.registrationDataChanged(
+                displayName.text.toString(),
+                username.text.toString(),
+                password.text.toString(),
+                confirm_p.text.toString()
+            )
+        }
+
+        confirm_p.apply {
             afterTextChanged {
                 registrationViewModel.registrationDataChanged(
+                    displayName.text.toString(),
                     username.text.toString(),
                     password.text.toString(),
-                    displayName.text.toString()
+                    confirm_p.text.toString()
                 )
             }
 
@@ -102,7 +120,7 @@ class RegistrationActivity : AppCompatActivity() {
                     // Вызывает метод логин репозитория по нажатию на клавишу ОК
                     EditorInfo.IME_ACTION_DONE ->
                         // Регистрируем пользователя через метод регистрации в registrationViewModel
-                    registrationViewModel.login(username.text.toString(), password.text.toString())
+                    registrationViewModel.login(username.text.toString(), password.text.toString(), displayName.text.toString())
                 }
                 false
             }
@@ -112,7 +130,7 @@ class RegistrationActivity : AppCompatActivity() {
                 loading.visibility = View.VISIBLE
 
                 //Регистрируем пользователя через метод регистрации в loginViewModel
-                registrationViewModel.login(username.text.toString(), password.text.toString())
+                registrationViewModel.login(username.text.toString(), password.text.toString(), displayName.text.toString())
 
             }
         }

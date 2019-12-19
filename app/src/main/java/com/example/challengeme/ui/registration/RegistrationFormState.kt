@@ -8,6 +8,7 @@ data class RegistrationFormState(
     val displayNameError: Int? = null,
     val usernameError: Int? = null,
     val passwordError: Int? = null,
+    val confirmError: Int?=null,
     val isDataValid: Boolean = false
     // val uniqueUsernameError
 )

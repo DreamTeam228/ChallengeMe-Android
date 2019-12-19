@@ -10,7 +10,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.Exception
 
-class RegistrationAsyncTask (val username : String, val password : String) : AsyncTask<String, Void, RegistrationResult?>() {
+class RegistrationAsyncTask (val username : String, val password : String, val displayName: String) : AsyncTask<String, Void, RegistrationResult?>() {
 
     override fun doInBackground(vararg p0: String?): RegistrationResult? {
         val url = p0[0]
@@ -21,7 +21,7 @@ class RegistrationAsyncTask (val username : String, val password : String) : Asy
 
         val postReg: PostRegistrationInterface = retrofit.create(PostRegistrationInterface::class.java)
         return try {
-            val regObj: Call<String> = postReg.createUserLogin(username, password)
+            val regObj: Call<String> = postReg.createUserLogin(username, password, displayName)
             val response: Response<String> = regObj.execute()
             val status: Boolean? = response.isSuccessful
 

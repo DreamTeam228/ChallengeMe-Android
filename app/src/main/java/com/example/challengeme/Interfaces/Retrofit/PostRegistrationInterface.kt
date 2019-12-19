@@ -11,6 +11,7 @@ interface PostRegistrationInterface {
     @POST("registration")
     fun createUserLogin  (
             @Field("username") name: String,
-            @Field ("password") pass: String
+            @Field ("password") pass: String,
+            @Field("displayName") displayName: String
     ) : Call<String>
 }

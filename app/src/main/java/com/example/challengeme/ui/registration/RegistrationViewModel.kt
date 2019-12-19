@@ -16,25 +16,28 @@ class RegistrationViewModel : ViewModel() {
     private val _registrationResult = MutableLiveData<RegistrationResult>()
     val registrationResult: LiveData<RegistrationResult> = _registrationResult
 
-    fun login(username: String, password: String) {
+    fun login(username: String, password: String, displayName: String) {
         // can be launched in a separate asynchronous job
 
         val result = RegistrationAsyncTask(
             username,
-            password
+            password,
+            displayName
         ).execute("http://188.225.46.84").get()
         _registrationResult.value = result
 
     }
 
-    fun registrationDataChanged(username: String, password: String, displayName: String) {
+    fun registrationDataChanged(displayName: String, username: String, password: String, confirm_password: String) {
         if (!isUserNameValid(username)) { // проверям валидность логина
             _registrationForm.value = RegistrationFormState(usernameError = R.string.invalid_username)  // присваем состояние ошибки
         } else if (!isPasswordValid(password)) {      // проверяем валидность пароля
             _registrationForm.value = RegistrationFormState(passwordError = R.string.invalid_password)  // присваиваем состояние ошибки
         } else if (!isDisplayNameValid(displayName)) {      // проверяем валидность пароля
             _registrationForm.value = RegistrationFormState(displayNameError = R.string.invalid_displayName)  // присваиваем состояние ошибки
-        } else {
+        }  else if (!isPasswordConfirmed(password,confirm_password)) {
+            _registrationForm.value = RegistrationFormState(confirmError = R.string.invalid_confirm)
+        }  else {
             _registrationForm.value = RegistrationFormState(isDataValid = true)   //если все ок - меняем флаг, который разблокирует кнопку
         }
         // else if(!isUserNameUnique) { и погнали ошибку }
@@ -58,5 +61,9 @@ class RegistrationViewModel : ViewModel() {
     // A placeholder password validation check
     private fun isPasswordValid(password: String): Boolean {
         return password.length > 4
+    }
+
+    private fun isPasswordConfirmed(pass:String,confirm_pass:String):Boolean {
+        return pass == confirm_pass
     }
 }
