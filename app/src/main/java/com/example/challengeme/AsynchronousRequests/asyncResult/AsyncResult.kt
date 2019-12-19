@@ -1,4 +1,4 @@
-package com.example.challengeme.ui.login
+package com.example.challengeme.AsynchronousRequests.asyncResult
 
 /**
  * Authentication result : success (user details) or error message.
@@ -7,7 +7,7 @@ package com.example.challengeme.ui.login
 //результат входа (успещный вход, ошибка входа)
 // при регистрации: false или true
 
-data class RegistrationResult(
+data class AsyncResult(
     val success: Int? = null,
     val error: Int? = null
 )

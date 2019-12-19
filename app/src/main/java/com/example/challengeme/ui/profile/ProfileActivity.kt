@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
@@ -14,19 +16,14 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.challengeme.R
 import com.example.challengeme.data.globalData.userRepository
 import com.example.challengeme.ui.UserListActivity
-import com.example.challengeme.ui.home.HomeViewModel
 
 
 class ProfileActivity : AppCompatActivity() {
-
-    public lateinit var profileViewModel: HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
-
-        profileViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
@@ -42,52 +39,34 @@ class ProfileActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
         //supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-
-
     }
 
     override fun onCreateOptionsMenu (menu: Menu) : Boolean {
         menuInflater.inflate(R.menu.profile_menu, menu)
         val logout = menu.findItem(R.id.logout)
-        val edit = menu.findItem(R.id.edit)
-        val apply = menu.findItem(R.id.apply)
         // А перед тем, как проверять зарегистрированность юзера, надо проверить, есть ли инфа о нём в кэше
         logout.setOnMenuItemClickListener {
-            /*val builder = AlertDialog.Builder(baseContext)
-            builder.setTitle(R.string.logoutTitle)
-            builder.setMessage(R.string.logoutText)
-            builder.setPositiveButton(R.string.yes) { _, _ ->
+
+            val builder = AlertDialog.Builder(this@ProfileActivity)
+
+            builder.setTitle("Выход из профиля")
+
+            builder.setMessage("Вы уверены, что хотите выйти?")
+
+            builder.setPositiveButton("ХОЧУ"){ _, _ ->
+                Toast.makeText(applicationContext,"Ok, fuck you",Toast.LENGTH_SHORT).show()
                 userRepository.instance.logout()
                 logoutUser()
-            }
-            builder.setNegativeButton(R.string.no) { _, _ ->
-
+                finish()
             }
 
-            val dialog : AlertDialog = builder.create()
-            dialog.show()*/
+            builder.setNegativeButton("НЕ ХОЧУ"){ _, _ ->
+                Toast.makeText(applicationContext,"You are breathtaking",Toast.LENGTH_SHORT).show()
+            }
 
-            userRepository.instance.logout()
-            logoutUser()
-            finish()
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
 
-            true
-        }
-
-        edit.setOnMenuItemClickListener {
-            profileViewModel.disableEditState()
-            edit.isVisible = false
-            apply.isVisible = true
-
-            true
-        }
-
-        apply.setOnMenuItemClickListener {
-            profileViewModel.enableEditState()
-            apply.isVisible = false
-            edit.isVisible = true
-
-            //profileViewModel.sendRequest(name, position...)
             true
         }
 

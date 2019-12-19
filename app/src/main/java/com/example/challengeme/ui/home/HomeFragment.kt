@@ -1,9 +1,11 @@
 package com.example.challengeme.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -13,12 +15,12 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.challengeme.R
 import com.example.challengeme.data.globalData.userRepository
 import com.example.challengeme.data.model.LoggedInUser
+import com.example.challengeme.ui.EditUserActivity
 import com.example.challengeme.ui.login.LoggedInUserView
 import com.squareup.picasso.Picasso
 
 class HomeFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
     private lateinit var userInfo: LoggedInUserView
     private val user: LoggedInUser? = userRepository.instance.user
 
@@ -44,14 +46,13 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Здесь нужно получать ВМ из профайлАктивити
-        homeViewModel =
-            ViewModelProviders.of(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         /*val textView: TextView = root.findViewById(R.id.text_home)
         homeViewModel.text.observe(this, Observer {
             textView.text = it
         })*/
-        userInfo = LoggedInUserView(user!!.displayName, user.position,
+        userInfo = LoggedInUserView(user!!.id, user.login,
+            user.displayName, user.position,
             user.userLevel, user.challengeCount,
             // НЕ ЗАБЫТЬ !!!
             // СНЯТЬ КОММЕНТ !!!
@@ -96,34 +97,15 @@ class HomeFragment : Fragment() {
             .load(la?.image)
             .into(lastAchievementIcon_iv)
 
-
-        homeViewModel.editState.observe(this@HomeFragment, Observer {
-            val editState = it ?: return@Observer
-
-            if(editState.isEnable == true) {
-                userDisplayName_tv.isFocusable = false
-                userDisplayName_tv.isEnabled = false
-                userDisplayName_tv.isClickable = false
-                userDisplayName_tv.isFocusableInTouchMode = false
-
-                userPosition_tv.isFocusable = false
-                userPosition_tv.isEnabled = false
-                userPosition_tv.isClickable = false
-                userPosition_tv.isFocusableInTouchMode = false
-            } else {
-                userDisplayName_tv.isFocusable = true
-                userDisplayName_tv.isEnabled = true
-                userDisplayName_tv.isClickable = true
-                userDisplayName_tv.isFocusableInTouchMode = true
-
-                userPosition_tv.isFocusable = true
-                userPosition_tv.isEnabled = true
-                userPosition_tv.isClickable = true
-                userPosition_tv.isFocusableInTouchMode = true
-            }
-
-        })
-
+        val edit_btn = root.findViewById<Button>(R.id.editButton)
+        edit_btn.setOnClickListener {
+            val intent = Intent (context, EditUserActivity::class.java)
+            intent.putExtra(getText(R.string.intentDisplayName).toString(), userInfo.displayName)
+            intent.putExtra(getText(R.string.intentPicture).toString(), userInfo.profilePicture)
+            intent.putExtra(getText(R.string.intentLogin).toString(), userInfo.login)
+            intent.putExtra(getText(R.string.intentId).toString(), userInfo.id)
+            startActivityForResult(intent,1)
+        }
 
         return root
     }

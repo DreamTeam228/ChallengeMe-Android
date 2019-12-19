@@ -12,7 +12,6 @@ class LoginDataSource {
     fun login(username: String, password: String): Result<LoggedInUser> {
         try {
             // handle loggedInUser authentication
-
             val user = checkLogin(username, password)
             return Result.Success(user)
         } catch (e: Throwable) {

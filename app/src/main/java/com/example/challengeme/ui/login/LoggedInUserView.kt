@@ -7,6 +7,8 @@ import com.example.challengeme.User.UserChallenge
  * User details post authentication that is exposed to the UI
  */
 data class LoggedInUserView(
+    var id: Int = -1,
+    var login: String? = null,
     var displayName: String? = null,
     var position: String? = null,
     var userLevel: String? = null,

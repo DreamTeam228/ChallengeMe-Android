@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.EditUserActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <FrameLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.github.florent37.shapeofview.shapes.CircleView
+                    android:id="@+id/userAvatarForm"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:elevation="4dp"
+                    app:shape_circle_borderColor="@color/colorAccent"
+                    app:shape_circle_borderWidth="4dp">
+
+                    <!-- YOUR CONTENT -->
+
+                    <ImageView
+                        android:id="@+id/editUserProfilePicture_ImageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        tools:srcCompat="@tools:sample/avatars[3]" />
+                </com.github.florent37.shapeofview.shapes.CircleView>
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/editUser_tv"
+                style="@style/CM_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Отображаемая информация" />
+
+            <EditText
+                android:id="@+id/editUserDisplayName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:ems="10"
+                android:hint="@string/prompt_name"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/editUser_tv2"
+                style="@style/CM_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Конфиденциальная информация" />
+
+            <EditText
+                android:id="@+id/editUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:ems="10"
+                android:hint="@string/prompt_email"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/editUserOldPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:ems="10"
+                android:hint="Старый пароль"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/editUserNewPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:ems="10"
+                android:hint="Новый пароль"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/editUserNewPassConf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:ems="10"
+                android:hint="Подтвердите новый пароль"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/editUser_submitBtn"
+                style="@style/CM_buttonBlue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Сохранить изменения" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

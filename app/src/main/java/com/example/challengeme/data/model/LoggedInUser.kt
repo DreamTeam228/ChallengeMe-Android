@@ -30,7 +30,7 @@ class LoggedInUser/*(
 /*)*/ {
     var id : Int = 0
     lateinit var login : String
-    lateinit var password : String
+    lateinit var password : String // не нужен нам тут пароль
     lateinit var displayName: String
     lateinit var position: String
     lateinit var userLevel: String

@@ -5,7 +5,7 @@ package com.example.challengeme.ui.login
  */
 
 //результат входа (успещный вход, ошибка входа)
-
+// REMAKE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 data class LoginResult(
     val success: LoggedInUserView? = null,
     val error: Int? = null

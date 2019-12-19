@@ -42,10 +42,42 @@ class LoginRepository(val dataSource: LoginDataSource) {
         return result
     }
 
+    fun changeData(displayName: String?, login: String?, password: String?, picture: String?) {
+        if(displayName != null) {
+            changeUserDisplayName(displayName)
+        }
+        if (login != null) {
+            changeUserUsername(login)
+        }
+        if (password != null) {
+            changeUserPassword(password)
+        }
+        if (picture != null) {
+            changeUserPicture(picture)
+        }
+    }
+
+    private fun changeUserPassword(password: String) {
+        this.user?.password = password
+    }
+
+    private fun changeUserPicture(picture: String) {
+        this.user?.profilePicture = picture
+    }
+
+    private fun changeUserUsername(login: String) {
+        this.user?.login = login
+
+    }
+
     private fun setLoggedInUser(loggedInUser: LoggedInUser) {
         this.user = loggedInUser
         // If user credentials will be cached in local storage, it is recommended it be encrypted
         // @see https://developer.android.com/training/articles/keystore
+    }
+
+    private fun changeUserDisplayName(dn: String) {
+        this.user?.displayName = dn
     }
 
     // ТЕСТОВАЯ ХРЕНЬ КОГДА НЕКИТ ОПЯТЬ РОНЯЕТ СЕРВАК, НЕ ЗАБЫТЬ УБАРТЬ МЕТОД

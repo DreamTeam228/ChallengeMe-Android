@@ -78,4 +78,15 @@
 
     <string name="yes">Да</string>
     <string name="no">Нет</string>
+
+    <string name="intentDisplayName">usrdn</string>
+    <string name="intentLogin">usrl</string>
+    <string name="intentPicture">usrp</string>
+    <string name="intentId">usrid</string>
+    <string name="all_error">Логин занят и старый пароль неверен</string>
+    <string name="oldPass_error">Старый пароль не совпадает с текущим вводом</string>
+    <string name="loginIsTaken_error">Логин занят</string>
+    <string name="change_success">Все ок</string>
+    <string name="error">Произошла ошибка. Попробуйте снова</string>
+    <string name="sameFieldsOrPassword_error">Вы не меняли данные или неправильно повторили пароль</string>
 </resources>

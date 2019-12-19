@@ -18,10 +18,17 @@ class LoginCheckAsyncTask (val username : String) : AsyncTask<String, Void, Int?
             .build()
 
         val loginCheck: PostLoginCheck = retrofit.create(PostLoginCheck::class.java)
-       try {
+        try {
            val loginObj: Call<Int?> = loginCheck.isLoginFree(username)
            val response: Response<Int?> = loginObj.execute()
-           return response.body()
+            val status = response.isSuccessful
+
+            return if(status) {
+                1
+            } else {
+                0
+            }
+
         } catch (e: Exception) {
             e.printStackTrace()
             return null

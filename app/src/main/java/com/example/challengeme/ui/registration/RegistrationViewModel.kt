@@ -4,17 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
-
 import com.example.challengeme.R
 import com.example.challengeme.AsynchronousRequests.RegistrationAsyncTask
+import com.example.challengeme.AsynchronousRequests.asyncResult.AsyncResult
 
 class RegistrationViewModel : ViewModel() {
 
     private val _registrationForm = MutableLiveData<RegistrationFormState>()
     val registrationFormState: LiveData<RegistrationFormState> = _registrationForm
 
-    private val _registrationResult = MutableLiveData<RegistrationResult>()
-    val registrationResult: LiveData<RegistrationResult> = _registrationResult
+    private val _registrationResult = MutableLiveData<AsyncResult>()
+    val registrationResult: LiveData<AsyncResult> = _registrationResult
 
     fun login(username: String, password: String, displayName: String) {
         // can be launched in a separate asynchronous job
@@ -29,15 +29,15 @@ class RegistrationViewModel : ViewModel() {
     }
 
     fun registrationDataChanged(displayName: String, username: String, password: String, confirm_password: String) {
-        if (!isUserNameValid(username)) { // проверям валидность логина
+        if (!isDisplayNameValid(displayName)) {      // проверяем валидность пароля
+            _registrationForm.value = RegistrationFormState(displayNameError = R.string.invalid_displayName)  // присваиваем состояние ошибки
+        } else if (!isUserNameValid(username)) { // проверям валидность логина
             _registrationForm.value = RegistrationFormState(usernameError = R.string.invalid_username)  // присваем состояние ошибки
         } else if (!isPasswordValid(password)) {      // проверяем валидность пароля
             _registrationForm.value = RegistrationFormState(passwordError = R.string.invalid_password)  // присваиваем состояние ошибки
-        } else if (!isDisplayNameValid(displayName)) {      // проверяем валидность пароля
-            _registrationForm.value = RegistrationFormState(displayNameError = R.string.invalid_displayName)  // присваиваем состояние ошибки
-        }  else if (!isPasswordConfirmed(password,confirm_password)) {
+        } else if (!isPasswordConfirmed(password,confirm_password)) {
             _registrationForm.value = RegistrationFormState(confirmError = R.string.invalid_confirm)
-        }  else {
+        } else {
             _registrationForm.value = RegistrationFormState(isDataValid = true)   //если все ок - меняем флаг, который разблокирует кнопку
         }
         // else if(!isUserNameUnique) { и погнали ошибку }
