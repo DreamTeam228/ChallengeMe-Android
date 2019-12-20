@@ -2,6 +2,7 @@ package com.example.challengeme.AsynchronousRequests
 
 import android.os.AsyncTask
 import com.example.challengeme.AsynchronousRequests.asyncResult.AsyncResult
+import com.example.challengeme.AsynchronousRequests.asyncResult.RequestResult
 import com.example.challengeme.Interfaces.Retrofit.PostUserEdit
 import com.example.challengeme.R
 import retrofit2.Call
@@ -20,11 +21,12 @@ class UserEditAsyncTask(val id: Int, val displayName: String?, val login: String
 
         val postEdit: PostUserEdit = retrofit.create(PostUserEdit::class.java)
         return try {
-            val regObj: Call<Int> = postEdit.editUser(id, displayName, login, password)
-            val response: Response<Int> = regObj.execute()
-            val result: Int? = response.body()
+            //val regObj: Call<Int> = postEdit.editUser(id, displayName, login, password)
+            val regObj: Call<RequestResult> = postEdit.editUser(mapOf("id" to id, "displayName" to displayName, "login" to login, "password" to password))
+            val response: Response<RequestResult> = regObj.execute()
+            val result: RequestResult? = response.body()
 
-            when (result) {
+            when (result?.result) {
                 0 -> {
                     AsyncResult(success = R.string.change_success)
                 }

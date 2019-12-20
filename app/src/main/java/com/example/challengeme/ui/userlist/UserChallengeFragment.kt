@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.challengeme.AsynchronousRequests.ChallengesAsyncTask
 import com.example.challengeme.R
+import com.example.challengeme.data.globalData.userRepository
 import com.example.challengeme.ui.Adapters.ChallengeAdapter
 
 class UserChallengeFragment : Fragment() {
@@ -17,6 +18,7 @@ class UserChallengeFragment : Fragment() {
     lateinit var recycler: RecyclerView
     lateinit var challengeAdapter: RecyclerView.Adapter<*>
     lateinit var challengeManager: RecyclerView.LayoutManager
+    private var userId: Int = -1
 
     companion object {
         fun newInstance() = UserChallengeFragment()
@@ -29,9 +31,10 @@ class UserChallengeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val root = inflater.inflate(R.layout.user_challenge_fragment, container, false)
+        userId = arguments!!.getInt(getText(R.string.userId).toString())
 
         // опять же, либо глобальным
-        val userChallenges = ChallengesAsyncTask().execute().get()!!
+        val userChallenges = ChallengesAsyncTask(userId).execute().get()!!
 
         recycler = root.findViewById(R.id.userChallenges_recycler)
 

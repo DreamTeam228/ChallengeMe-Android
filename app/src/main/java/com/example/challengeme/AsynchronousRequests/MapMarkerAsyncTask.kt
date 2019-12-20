@@ -1,16 +1,9 @@
 package com.example.challengeme.AsynchronousRequests
 
 import android.os.AsyncTask
-import com.example.challengeme.Interfaces.GetChallenges
-import com.example.challengeme.Interfaces.Retrofit.GetMapMarkers
 import com.example.challengeme.Markers.MapMarker
 import com.example.challengeme.Markers.MapMarkerObject
-import com.example.challengeme.User.UserChallenge
 import com.example.challengeme.data.globalData.mapMarkerModel
-import retrofit2.Call
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.Exception
 
 class MapMarkerAsyncTask : AsyncTask<String, Void, Unit>() {

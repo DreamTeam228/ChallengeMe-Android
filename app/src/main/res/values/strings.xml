@@ -89,4 +89,5 @@
     <string name="change_success">Все ок</string>
     <string name="error">Произошла ошибка. Попробуйте снова</string>
     <string name="sameFieldsOrPassword_error">Вы не меняли данные или неправильно повторили пароль</string>
+    <string name="userId">id</string>
 </resources>

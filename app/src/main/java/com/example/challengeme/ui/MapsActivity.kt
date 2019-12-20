@@ -2,6 +2,7 @@ package com.example.challengeme.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.ui.AppBarConfiguration
@@ -39,6 +40,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 R.id.menu_item_shop
             )
         )
+
         navView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_item_rent -> {
@@ -60,9 +62,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
 
         }
+
         //setupActionBarWithNavController(navController, appBarConfiguration)
         //navView.setupWithNavController(navController)
+
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map2) as SupportMapFragment
@@ -73,6 +78,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mapViewModel =
             ViewModelProviders.of(this).get(MapViewModel::class.java)
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> {
+                finish()
+                super.onBackPressed()
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     /**

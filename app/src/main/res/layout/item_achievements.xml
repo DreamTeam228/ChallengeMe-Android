@@ -7,12 +7,13 @@
 
     <ImageView
         android:id="@+id/userAchievement_iv"
-        tools:srcCompat="@tools:sample/avatars[3]"
         android:layout_width="50sp"
         android:layout_height="50sp"
         android:layout_marginLeft="24sp"
+        android:layout_marginTop="8sp"
         android:layout_marginRight="8sp"
-        app:srcCompat="@drawable/ic_home_black_24dp" />
+        app:srcCompat="@drawable/ic_home_black_24dp"
+        tools:srcCompat="@tools:sample/avatars[3]" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,15 +23,18 @@
 
         <TextView
             android:id="@+id/userAchievementTitle_tv"
+            style="@style/CM_miniText_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8sp"
+            android:layout_marginBottom="0dp"
             android:layout_weight="1"
             android:text="Achievement Title"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/userAchievementText_tv"
+            style="@style/CM_miniText_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8sp"

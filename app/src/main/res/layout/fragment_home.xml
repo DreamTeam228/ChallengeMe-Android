@@ -29,8 +29,8 @@
 
                     <com.github.florent37.shapeofview.shapes.CircleView
                         android:id="@+id/userAvatarForm"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="100sp"
+                        android:layout_height="100sp"
                         android:elevation="4dp"
                         app:shape_circle_borderColor="@color/colorAccent"
                         app:shape_circle_borderWidth="4dp">
@@ -104,6 +104,7 @@
 
                 <TextView
                     android:id="@+id/userDisplayName_Title"
+                    style="@style/CM_body_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -115,6 +116,7 @@
 
                 <TextView
                     android:id="@+id/userDisplayName_TextView"
+                    style="@style/CM_body_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -204,7 +206,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/showAllUserChallenges"
                 android:textAlignment="center"
-                android:onClick="onViewMoreClick"/>
+                android:layout_marginTop="12sp"
+                />
 
             <TextView
                 android:id="@+id/userAchievements_Title"
@@ -226,7 +229,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/viewMoreAchievements"
                 android:textAlignment="center"
-                android:onClick="onViewMoreClick"/>
+                android:layout_marginBottom="12sp"
+                android:layout_marginTop="12sp"
+                />
 
         </LinearLayout>
     </ScrollView>

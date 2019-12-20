@@ -1,8 +1,10 @@
 package com.example.challengeme.ui
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -18,6 +20,7 @@ class EditUserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_user)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         val displayName = findViewById<EditText>(R.id.editUserDisplayName)
         val picture = findViewById<ImageView>(R.id.editUserProfilePicture_ImageView)
@@ -79,6 +82,8 @@ class EditUserActivity : AppCompatActivity() {
                             newPass,
                             newPic
                         )
+
+                        saveNewDataToCahe(newUsername,newPass)
                         //val intent = Intent()
                         setResult(RESULT_OK)
                         finish()
@@ -116,5 +121,31 @@ class EditUserActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> {
+                finish()
+                super.onBackPressed()
+            }
+            else -> {
+                return super.onOptionsItemSelected(item)
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun saveNewDataToCahe(login : String?, password: String?) {
+        val pref = getSharedPreferences(getText(R.string.userCache).toString(), Context.MODE_PRIVATE)
+        val editor = pref.edit()
+        if(login != null) {
+            editor.putString(getText(R.string.userCacheLogin).toString(), login)
+            editor.apply()
+        }
+        if (password != null) {
+            editor.putString(getText(R.string.userCachePassword).toString(), password)
+            editor.apply()
+        }
     }
 }

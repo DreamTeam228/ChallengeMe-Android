@@ -23,8 +23,7 @@ class HobbyAsyncTask (var context: Context) : AsyncTask<String, Void, HobbyObjec
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val hobbyApi: GetHobby = retrofit.create(
-            GetHobby::class.java)
+        val hobbyApi: GetHobby = retrofit.create(GetHobby::class.java)
         try {
             val hobbyObj: Call<HobbyObject> = hobbyApi.hobbyObj()
             val response: Response<HobbyObject> = hobbyObj.execute()

@@ -79,16 +79,29 @@
 
             <TextView
                 android:id="@+id/description_tv"
-                style="@style/CM_text_style"
+                style="@style/CM_body_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Текст описания" />
+                android:text="Текст описания"
+                android:textAppearance="@style/CM_body_text" />
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/image_vp"
                 android:layout_width="wrap_content"
                 android:layout_height="200dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:fadeScrollbars="false"
+                android:focusableInTouchMode="false"
+                android:hapticFeedbackEnabled="false"
+                android:splitMotionEvents="false" />
+
+            <TextView
+                android:id="@+id/galeryHint_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Вы можете листать картинки свайпом"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
             <TextView
                 android:id="@+id/guide_title"
@@ -99,12 +112,12 @@
 
             <TextView
                 android:id="@+id/guide_tv"
-                style="@style/CM_text_style"
+                style="@style/CM_body_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="serif"
                 android:text="Текст гайда"
-                android:textAppearance="@style/CM_text_style" />
+                android:textAppearance="@style/CM_body_text" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/video_recyclerView"
@@ -149,9 +162,10 @@
 
             <TextView
                 android:id="@+id/exercise_tv"
-                style="@style/CM_text_style"
+                style="@style/CM_body_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/CM_body_text" />
         </LinearLayout>
 
     </ScrollView>

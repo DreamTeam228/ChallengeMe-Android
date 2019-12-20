@@ -3,6 +3,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -37,14 +38,29 @@ class ProfileActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        //supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> {
+                finish()
+                super.onBackPressed()
+            }
+            else -> {
+                return super.onOptionsItemSelected(item)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onCreateOptionsMenu (menu: Menu) : Boolean {
         menuInflater.inflate(R.menu.profile_menu, menu)
         val logout = menu.findItem(R.id.logout)
         // А перед тем, как проверять зарегистрированность юзера, надо проверить, есть ли инфа о нём в кэше
+
         logout.setOnMenuItemClickListener {
 
             val builder = AlertDialog.Builder(this@ProfileActivity)
@@ -82,12 +98,5 @@ class ProfileActivity : AppCompatActivity() {
     }
 
 
-    fun onViewMoreClick(view: View?) {
-        val intent = Intent(baseContext, UserListActivity::class.java)
-        when(view!!.id) {
-            R.id.viewMoreChallenges_Title -> { intent.putExtra(getText(R.string.userList).toString(), "challenges") }
-            R.id.viewMoreAchievements_Title -> { intent.putExtra(getText(R.string.userList).toString(), "achievements") }
-        }
-        startActivity(intent)
-    }
+
 }

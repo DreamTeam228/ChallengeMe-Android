@@ -16,6 +16,7 @@ import com.example.challengeme.R
 import com.example.challengeme.data.globalData.userRepository
 import com.example.challengeme.data.model.LoggedInUser
 import com.example.challengeme.ui.EditUserActivity
+import com.example.challengeme.ui.UserListActivity
 import com.example.challengeme.ui.login.LoggedInUserView
 import com.squareup.picasso.Picasso
 
@@ -107,8 +108,34 @@ class HomeFragment : Fragment() {
             startActivityForResult(intent,1)
         }
 
+
+        val viewMoreAchievements = root.findViewById<TextView>(R.id.viewMoreAchievements_Title)
+        viewMoreAchievements.setOnClickListener {
+            val intent = Intent(activity!!.baseContext, UserListActivity::class.java)
+            intent.putExtra(getText(R.string.userId).toString(), userInfo.id)
+            intent.putExtra(getText(R.string.userList).toString(), "achievements")
+            startActivity(intent)
+        }
+
+        val viewMoreChallenges = root.findViewById<TextView>(R.id.viewMoreChallenges_Title)
+        viewMoreChallenges.setOnClickListener {
+            val intent = Intent(activity!!.baseContext, UserListActivity::class.java)
+            intent.putExtra(getText(R.string.userId).toString(), userInfo.id)
+            intent.putExtra(getText(R.string.userList).toString(), "challenges")
+            startActivity(intent)
+        }
+
         return root
     }
 
+    /*fun onViewMoreClick() {
+        val intent = Intent(activity!!.baseContext, UserListActivity::class.java)
+        intent.putExtra(getText(R.string.userId).toString(), user!!.id)
+        when(view!!.id) {
+            R.id.viewMoreChallenges_Title -> { intent.putExtra(getText(R.string.userList).toString(), "challenges") }
+            R.id.viewMoreAchievements_Title -> { intent.putExtra(getText(R.string.userList).toString(), "achievements") }
+        }
+        startActivity(intent)
+    }*/
 
 }

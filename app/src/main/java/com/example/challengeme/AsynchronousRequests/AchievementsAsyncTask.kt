@@ -1,15 +1,10 @@
 package com.example.challengeme.AsynchronousRequests
 
 import android.os.AsyncTask
-import com.example.challengeme.Interfaces.GetAchievements
 import com.example.challengeme.User.UserAchievement
-import retrofit2.Call
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.Exception
 
-class AchievementsAsyncTask : AsyncTask<String, Void, ArrayList<UserAchievement>?>() {
+class AchievementsAsyncTask(val id: Int) : AsyncTask<String, Void, ArrayList<UserAchievement>?>() {
 
     override fun doInBackground(vararg p0: String?): ArrayList<UserAchievement>? {
         /*val url = p0[0]
@@ -18,10 +13,11 @@ class AchievementsAsyncTask : AsyncTask<String, Void, ArrayList<UserAchievement>
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 */
-        //val getChallenges: GetAchievements = retrofit.create(GetAchievements::class.java)
+        //val postChallenges: GetAchievements = retrofit.create(GetAchievements::class.java)
         try {
-            /*val achievementObj: Call<ArrayList<UserAchievement>?>? = getChallenges.getAchievements()
-            val response: Response<ArrayList<UserAchievement>?> = achievementObj!!.execute()
+            //val achievementObj: Call<ArrayList<UserAchievement>?> = postChallenges.postAchievements()
+            /*val achievementObj = postChallenges.postAchievements()
+            val response: Response<ArrayList<UserAchievement>?> = achievementObj.execute()
             return response.body()*/
 
 
