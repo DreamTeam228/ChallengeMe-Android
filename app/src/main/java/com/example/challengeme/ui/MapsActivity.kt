@@ -104,7 +104,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        val startPoint = LatLng(55.7,37.6)                                // здесь будет местополжение пользователя
+        val startPoint = LatLng(55.7,37.6)
+        mMap.setMinZoomPreference(10.0f)
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(startPoint,12.0f))
+        // здесь будет местополжение пользователя
         mMap.moveCamera(CameraUpdateFactory.newLatLng(startPoint))
         mapViewModel.currentMarkers.observe(this, Observer {
             val markers = it?: return@Observer
@@ -117,6 +120,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         //mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
 
     }
+
 
     fun changeMarkers(markers: ArrayList<MapMarker>) {
 

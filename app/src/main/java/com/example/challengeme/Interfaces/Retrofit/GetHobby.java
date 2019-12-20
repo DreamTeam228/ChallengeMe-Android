@@ -7,7 +7,7 @@ import retrofit2.http.GET;
 
 public interface GetHobby {
 
-    @GET ("json")
+    @GET ("json222")
     Call<HobbyObject> hobbyObj();
 
 }
